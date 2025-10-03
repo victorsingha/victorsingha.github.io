@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>victor.</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #0d1117;
+      color: #e6e6e6;
+    }
+
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      top: 0;
+      left: 0;
+    }
+
+    canvas {
+      filter: blur(0.5px) brightness(1.5);
+    }
+
+    h1, h2, p, a {
+      text-shadow: 0 0 6px rgba(255, 255, 255, 0.2);
+    }
+
+    a {
+      color: #5eead4; /* Teal-300 */
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .carousel {
+      display: flex;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    .carousel-item {
+      min-width: 300px;
+      margin-right: 1rem;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel-item h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #5eead4;
+    }
+
+    .carousel-item p {
+      color: #ccc;
+      font-size: 1rem;
+    }
+
+    .carousel-item .project-title {
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body class="relative overflow-x-hidden">
+
+  <!-- Glowing Particles Background -->
+  <div id="particles-js"></div>
+
+  <!-- Page Content -->
+  <div class="relative z-10 min-h-screen flex flex-col justify-center items-center text-center px-4">
+    <header class="py-12">
+      <h1 class="text-4xl font-bold drop-shadow-xl">Hi, I'm Victor</h1>
+      <p class="text-gray-400 mt-2 text-lg">Developer | Designer | Dreamer</p>
+    </header>
+
+    <section id="about" class="max-w-2xl py-6">
+      <h2 class="text-2xl font-semibold mb-4">About Me</h2>
+      <p class="text-gray-400 leading-relaxed">
+        I'm a developer passionate about building robust and scalable web applications using C#, Angular, Web API, SQL Server, and IIS.
+      </p>
+    </section>
+
+  <section id="projects" class="py-6 max-w-6xl mx-auto px-4">
+  <h2 class="text-2xl font-semibold mb-8 text-center">Projects</h2>
+
+  <div class="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+    <!-- Fundoo Application -->
+    <div class="bg-[#161b22] p-6 rounded shadow hover:shadow-lg transition">
+      <h3 class="project-title text-lg font-semibold  mb-2">Fundoo Application</h3>
+      <p class="text-gray-400">A clone of Google Keep, where users can create, edit, and delete notes. Built with modern web technologies.</p>
+    </div>
+
+    <!-- PickItUp -->
+    <div class="bg-[#161b22] p-6 rounded shadow hover:shadow-lg transition">
+      <h3 class="project-title text-lg font-semibold  mb-2">PickItUp</h3>
+      <p class="text-gray-400">A delivery app supporting both customer and user. Customers book services while drivers manage deliveries.</p>
+    </div>
+
+    <!-- Employee Payroll App -->
+    <div class="bg-[#161b22] p-6 rounded shadow hover:shadow-lg transition">
+      <h3 class="project-title text-lg font-semibold  mb-2">Employee Payroll App</h3>
+      <p class="text-gray-400">Manage employee payroll, calculate salaries, and generate reports with a clean and responsive UI.</p>
+    </div>
+
+    <!-- Bookstore App -->
+    <div class="bg-[#161b22] p-6 rounded shadow hover:shadow-lg transition">
+      <h3 class="project-title text-lg font-semibold  mb-2">Bookstore App</h3>
+      <p class="text-gray-400">Browse and search for books. Built with Angular and backend integration for dynamic content.</p>
+    </div>
+
+    <!-- Address Book Console App -->
+    <div class="bg-[#161b22] p-6 rounded shadow hover:shadow-lg transition">
+      <h3 class="project-title text-lg font-semibold  mb-2">Address Book Console App</h3>
+      <p class="text-gray-400">A simple console app to store and manage contact details like name, phone, and address.</p>
+    </div>
+  </div>
+</section>
+
+
+
+    <section id="contact" class="py-6">
+      <h2 class="text-2xl font-semibold mb-4">Contact</h2>
+      <p><a href="mailto:developers.group.inc@gmail.com">developers.group.inc@gmail.com</a></p>
+    </section>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    window.addEventListener('load', () => {
+      particlesJS('particles-js', {
+        particles: {
+          number: {
+            value: 100,
+            density: { enable: true, value_area: 800 }
+          },
+          color: { value: "#ffffff" },
+          shape: {
+            type: "circle",
+            stroke: { width: 0, color: "#000000" }
+          },
+          opacity: {
+            value: 0.6,
+            random: true,
+            anim: { enable: true, speed: 0.5, opacity_min: 0.1, sync: false }
+          },
+          size: {
+            value: 3,
+            random: true,
+            anim: { enable: true, speed: 2, size_min: 0.3, sync: false }
+          },
+          line_linked: {
+            enable: true,
+            distance: 120,
+            color: "#ffffff",
+            opacity: 0.3,
+            width: 1
+          },
+          move: {
+            enable: true,
+            speed: 1.5,
+            direction: "none",
+            random: false,
+            straight: false,
+            out_mode: "bounce",
+            bounce: true,
+            attract: { enable: false }
+          }
+        },
+        interactivity: {
+          detect_on: "canvas",
+          events: {
+            onhover: { enable: true, mode: ["grab", "repulse"] },
+            onclick: { enable: true, mode: ["push"] },
+            resize: true
+          },
+          modes: {
+            grab: {
+              distance: 140,
+              line_linked: { opacity: 0.6 }
+            },
+            repulse: {
+              distance: 100,
+              duration: 0.4
+            },
+            push: {
+              particles_nb: 3
+            }
+          }
+        },
+        retina_detect: true
+      });
+
+      // Carousel controls
+      const prevButton = document.querySelector('.carousel-prev');
+      const nextButton = document.querySelector('.carousel-next');
+      const carousel = document.querySelector('.carousel');
+      let scrollAmount = 0;
+
+      prevButton.addEventListener('click', () => {
+        scrollAmount -= 300; // Adjust the value based on your item width
+        carousel.style.transform = `translateX(${scrollAmount}px)`;
+      });
+
+      nextButton.addEventListener('click', () => {
+        scrollAmount += 300; // Adjust the value based on your item width
+        carousel.style.transform = `translateX(${scrollAmount}px)`;
+      });
+    });
+  </script>
+</body>
+</html>
