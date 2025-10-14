@@ -96,7 +96,7 @@
 
     <!-- ACE Editor Section -->
     <section id="sql-editor" class="py-10 w-full max-w-6xl px-4">
-      <h2 class="text-2xl font-semibold mb-4 text-center">sql helper</h2>
+      <h2 class="text-2xl font-semibold mb-4 text-center">SQL Scripts</h2>
       <div class="overflow-hidden border border-gray-700 shadow-lg">
         <div id="editor" class="h-[400px] w-full text-white"></div>
       </div>
@@ -159,7 +159,7 @@ JOIN sys.allocation_units a ON p.partition_id = a.container_id
 WHERE s.name = 'hangfire'  -- replace with your schema name
 GROUP BY s.name, t.name, p.rows
 ORDER BY TotalSizeMB DESC;`
-    );
+    ,-1);
   </script>
 
 </body>
