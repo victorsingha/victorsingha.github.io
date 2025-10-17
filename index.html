@@ -55,7 +55,6 @@
       height: 400px;
       border: 0;
       background: #fff;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
     }
   </style>
 </head>
@@ -157,6 +156,12 @@
   <div id="iframe-container" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
 </section>
 
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+/>
+
+
 <script>
   const iframeList = [
     { url: "https://victorsingha.github.io/sql/" },
@@ -173,21 +178,24 @@
 
   iframeList.forEach(item => {
     const div = document.createElement('div');
-    
-    const link = document.createElement('a');
-    link.href = item.url;
-    link.target = "_blank";
-    link.textContent = item.url;
-    link.className = "text-blue-500 font-semibold mb-2 inline-block hover:underline text-center w-full";
-    
+    div.className = "flex flex-col items-center bg-white shadow-md rounded-lg p-4";
+
+    // Create icon link
+    const iconLink = document.createElement('a');
+    iconLink.href = item.url;
+    iconLink.target = "_blank";
+    iconLink.className = "text-blue-500 text-2xl mb-2 hover:text-blue-700";
+    iconLink.innerHTML = '<i class="fas fa-external-link-alt"></i>'; // Font Awesome icon
+
+    // Create iframe
     const iframe = document.createElement('iframe');
     iframe.src = item.url;
     iframe.sandbox = "allow-scripts allow-same-origin allow-forms";
     iframe.loading = "lazy";
-    
-    div.appendChild(link);
+    iframe.className = "w-full h-64 rounded border";
+
+    div.appendChild(iconLink);
     div.appendChild(iframe);
-    
     container.appendChild(div);
   });
 </script>
