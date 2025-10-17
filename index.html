@@ -151,90 +151,48 @@
     </section>
 
     <!-- Dual Iframe Section -->
-   <section id="iframes" class="py-10 w-full max-w-6xl px-4">
+    
+    <section id="iframes" class="py-10 w-full max-w-6xl px-4">
   <h2 class="text-2xl font-semibold mb-6 text-center text-slate-800">Vive Projects</h2>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-    <div>
-      <a href="https://victorsingha.github.io/sql/" target="_blank" class="text-blue-500 font-semibold mb-2 inline-block hover:underline text-center w-full">https://victorsingha.github.io/sql/</a>
-      <iframe
-        src="https://victorsingha.github.io/sql/"
-        sandbox="allow-scripts allow-same-origin allow-forms"
-        loading="lazy">
-      </iframe>
-    </div>
-
-    <div>
-      <a href="https://freelottieanimations.github.io/" target="_blank" class="text-blue-500 font-semibold mb-2 inline-block hover:underline text-center w-full">https://freelottieanimations.github.io/</a>
-    
-      <iframe
-        src="https://freelottieanimations.github.io/"
-        sandbox="allow-scripts allow-same-origin allow-forms"
-        loading="lazy">
-      </iframe>
-    </div>
-    
-    <div>
-      <a href="https://victorsingha.github.io/maticon/" target="_blank" class="text-blue-500 font-semibold mb-2 inline-block hover:underline text-center w-full">https://victorsingha.github.io/maticon/</a>
-    
-      <iframe
-        src="https://victorsingha.github.io/maticon/"
-        sandbox="allow-scripts allow-same-origin allow-forms"
-        loading="lazy">
-      </iframe>
-    </div>
-    
-    <div>
-      <a href="https://victorsingha.github.io/RandomUsers/" target="_blank" class="text-blue-500 font-semibold mb-2 inline-block hover:underline text-center w-full">https://victorsingha.github.io/RandomUsers/</a>
-    
-      <iframe
-        src="https://victorsingha.github.io/RandomUsers/"
-        sandbox="allow-scripts allow-same-origin allow-forms"
-        loading="lazy">
-      </iframe>
-    </div>
-    
-    <div>
-      <a href="https://antiquekingdom.github.io/" target="_blank" class="text-blue-500 font-semibold mb-2 inline-block hover:underline text-center w-full">https://antiquekingdom.github.io/</a>
-    
-      <iframe
-        src="https://antiquekingdom.github.io/"
-        sandbox="allow-scripts allow-same-origin allow-forms"
-        loading="lazy">
-      </iframe>
-    </div>
-    
-    <div>
-      <a href="https://victorsingha.github.io/ace/" target="_blank" class="text-blue-500 font-semibold mb-2 inline-block hover:underline text-center w-full">https://victorsingha.github.io/ace/</a>
-    
-      <iframe
-        src="https://victorsingha.github.io/ace/"
-        sandbox="allow-scripts allow-same-origin allow-forms"
-        loading="lazy">
-      </iframe>
-    </div>
-    
-    <div>
-      <a href="https://victorsingha.github.io/powershell/" target="_blank" class="text-blue-500 font-semibold mb-2 inline-block hover:underline text-center w-full">https://victorsingha.github.io/powershell/</a>
-    
-      <iframe
-        src="https://victorsingha.github.io/powershell/"
-        sandbox="allow-scripts allow-same-origin allow-forms"
-        loading="lazy">
-      </iframe>
-    </div>
-    
-    <div>
-      <a href="https://victorsingha.github.io/map/" target="_blank" class="text-blue-500 font-semibold mb-2 inline-block hover:underline text-center w-full">https://victorsingha.github.io/map/</a>
-    
-      <iframe
-        src="https://victorsingha.github.io/map/"
-        sandbox="allow-scripts allow-same-origin allow-forms"
-        loading="lazy">
-      </iframe>
-    </div>
-    
-  </div>
+  <div id="iframe-container" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
 </section>
+
+<script>
+  const iframeList = [
+    { url: "https://victorsingha.github.io/sql/" },
+    { url: "https://freelottieanimations.github.io/" },
+    { url: "https://victorsingha.github.io/maticon/" },
+    { url: "https://victorsingha.github.io/RandomUsers/" },
+    { url: "https://antiquekingdom.github.io/" },
+    { url: "https://victorsingha.github.io/ace/" },
+    { url: "https://victorsingha.github.io/powershell/" },
+    { url: "https://victorsingha.github.io/map/" }
+  ];
+
+  const container = document.getElementById('iframe-container');
+
+  iframeList.forEach(item => {
+    const div = document.createElement('div');
+    
+    const link = document.createElement('a');
+    link.href = item.url;
+    link.target = "_blank";
+    link.textContent = item.url;
+    link.className = "text-blue-500 font-semibold mb-2 inline-block hover:underline text-center w-full";
+    
+    const iframe = document.createElement('iframe');
+    iframe.src = item.url;
+    iframe.sandbox = "allow-scripts allow-same-origin allow-forms";
+    iframe.loading = "lazy";
+    
+    div.appendChild(link);
+    div.appendChild(iframe);
+    
+    container.appendChild(div);
+  });
+</script>
+    
+   
   </div>
 
   <!-- Scripts -->
