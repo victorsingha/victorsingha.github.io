@@ -64,13 +64,41 @@
 
   <!-- Glowing Particles Background -->
   <div id="particles-js"></div>
+  
+  <!-- Page Content -->
+<div class="relative z-10 min-h-screen flex flex-col justify-center items-center text-center px-4">
+
+  <!-- Top Section: Lottie + Name -->
+  <header class="py-12 w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8">
+    
+    <!-- Lottie Animation Left -->
+    <div class="flex-1">
+      <lottie-player
+        src="https://assets4.lottiefiles.com/packages/lf20_ydo1amjm.json"
+        background="transparent"
+        speed="1"
+        loop
+        autoplay
+        style="width:100%; max-width:400px; height:auto;">
+      </lottie-player>
+    </div>
+    
+    <!-- Name & Description Right -->
+    <div class="flex-1 text-center md:text-left">
+      <h1 class="text-5xl font-bold drop-shadow-xl text-slate-800">Hi, I'm Victor</h1>
+      <p class="text-gray-600 mt-2 text-lg">Developer | Designer | Dreamer</p>
+    </div>
+  </header>
+  
+</div>
+
+<!-- Lottie Player Script -->
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
 
   <!-- Page Content -->
   <div class="relative z-10 min-h-screen flex flex-col justify-center items-center text-center px-4">
-    <header class="py-12">
-      <h1 class="text-4xl font-bold drop-shadow-xl text-slate-800">Hi, I'm Victor</h1>
-      <p class="text-gray-600 mt-2 text-lg">Developer | Designer | Dreamer</p>
-    </header>
+  
 
     <section id="about" class="max-w-2xl py-6">
       <h2 class="text-2xl font-semibold mb-4 text-slate-800">About Me</h2>
@@ -80,7 +108,7 @@
     </section>
 
     <section id="projects" class="py-6 max-w-6xl mx-auto px-4">
-      <h2 class="text-2xl font-semibold mb-8 text-center text-slate-800">History</h2>
+      <h2 class="text-2xl font-semibold mb-8 text-center text-slate-800">History 1947 Projects</h2>
 
       <div class="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         <div class="card p-6 rounded">
