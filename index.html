@@ -3,9 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>victor.</title>
+  <title>Victor</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  
   <style>
     body {
       font-family: 'Poppins', sans-serif;
@@ -13,18 +15,14 @@
       color: #1e293b;
     }
 
-   #particles-js {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  top: 0;
-  left: 0;
-  pointer-events: none; /* <-- important */
-}
-
-    canvas {
-      filter: brightness(1.1);
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 0;
     }
 
     h1, h2, p, a {
@@ -34,7 +32,6 @@
     a {
       color: #0ea5e9;
     }
-
     a:hover {
       text-decoration: underline;
     }
@@ -44,7 +41,6 @@
       border: 1px solid #e2e8f0;
       transition: all 0.3s ease;
     }
-
     .card:hover {
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
       transform: translateY(-4px);
@@ -60,44 +56,30 @@
 </head>
 <body class="relative overflow-x-hidden">
 
-  <!-- Glowing Particles Background -->
+  <!-- Particles Background -->
   <div id="particles-js"></div>
-  
-  <!-- Page Content -->
-<div class="relative z-10 min-h-screen flex flex-col justify-center items-center text-center px-4">
 
-  <!-- Top Section: Lottie + Name -->
-  <header class="py-12 w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8">
-    
-    <!-- Lottie Animation Left -->
-    <div class="flex-1">
-      <lottie-player
-        src="https://assets4.lottiefiles.com/packages/lf20_ydo1amjm.json"
-        background="transparent"
-        speed="1"
-        loop
-        autoplay
-        style="width:100%; max-width:400px; height:auto;">
-      </lottie-player>
-    </div>
-    
-    <!-- Name & Description Right -->
-    <div class="flex-1 text-center md:text-left">
-      <h1 class="text-5xl font-bold drop-shadow-xl text-slate-800">Hi, I'm Victor</h1>
-      <p class="text-gray-600 mt-2 text-lg">Developer | Designer | Dreamer</p>
-    </div>
-  </header>
-  
-</div>
-
-<!-- Lottie Player Script -->
-<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-
-
-  <!-- Page Content -->
   <div class="relative z-10 min-h-screen flex flex-col justify-center items-center text-center px-4">
-  
 
+    <!-- Header: Lottie + Name -->
+    <header class="py-12 w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8">
+      <div class="flex-1">
+        <lottie-player
+          src="https://assets4.lottiefiles.com/packages/lf20_ydo1amjm.json"
+          background="transparent"
+          speed="1"
+          loop
+          autoplay
+          style="width:100%; max-width:400px; height:auto;">
+        </lottie-player>
+      </div>
+      <div class="flex-1 text-center md:text-left">
+        <h1 class="text-5xl font-bold drop-shadow-xl text-slate-800">Hi, I'm Victor</h1>
+        <p class="text-gray-600 mt-2 text-lg">Developer | Designer | Dreamer</p>
+      </div>
+    </header>
+
+    <!-- About Section -->
     <section id="about" class="max-w-2xl py-6">
       <h2 class="text-2xl font-semibold mb-4 text-slate-800">About Me</h2>
       <p class="text-gray-700 leading-relaxed">
@@ -105,37 +87,34 @@
       </p>
     </section>
 
+    <!-- Projects Section -->
     <section id="projects" class="py-6 max-w-6xl mx-auto px-4">
       <h2 class="text-2xl font-semibold mb-8 text-center text-slate-800">History 1947 Projects</h2>
-
       <div class="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         <div class="card p-6 rounded">
-          <h3 class="project-title text-lg font-semibold mb-2 text-slate-700">Fundoo Application</h3>
+          <h3 class="text-lg font-semibold mb-2 text-slate-700">Fundoo Application</h3>
           <p class="text-gray-600">A clone of Google Keep, where users can create, edit, and delete notes. Built with modern web technologies.</p>
         </div>
-
         <div class="card p-6 rounded">
-          <h3 class="project-title text-lg font-semibold mb-2 text-slate-700">PickItUp</h3>
+          <h3 class="text-lg font-semibold mb-2 text-slate-700">PickItUp</h3>
           <p class="text-gray-600">A delivery app supporting both customer and user. Customers book services while drivers manage deliveries.</p>
         </div>
-
         <div class="card p-6 rounded">
-          <h3 class="project-title text-lg font-semibold mb-2 text-slate-700">Employee Payroll App</h3>
+          <h3 class="text-lg font-semibold mb-2 text-slate-700">Employee Payroll App</h3>
           <p class="text-gray-600">Manage employee payroll, calculate salaries, and generate reports with a clean and responsive UI.</p>
         </div>
-
         <div class="card p-6 rounded">
-          <h3 class="project-title text-lg font-semibold mb-2 text-slate-700">Bookstore App</h3>
+          <h3 class="text-lg font-semibold mb-2 text-slate-700">Bookstore App</h3>
           <p class="text-gray-600">Browse and search for books. Built with Angular and backend integration for dynamic content.</p>
         </div>
-
         <div class="card p-6 rounded">
-          <h3 class="project-title text-lg font-semibold mb-2 text-slate-700">Address Book Console App</h3>
+          <h3 class="text-lg font-semibold mb-2 text-slate-700">Address Book Console App</h3>
           <p class="text-gray-600">A simple console app to store and manage contact details like name, phone, and address.</p>
         </div>
       </div>
     </section>
 
+    <!-- Contact Section -->
     <section id="contact" class="py-6">
       <h2 class="text-2xl font-semibold mb-4 text-slate-800">Contact</h2>
       <p><a href="mailto:developers.group.inc@gmail.com">developers.group.inc@gmail.com</a></p>
@@ -149,86 +128,39 @@
       </div>
     </section>
 
-    <!-- Dual Iframe Section -->
-    
+    <!-- Iframes Section -->
     <section id="iframes" class="py-10 w-full max-w-6xl px-4">
-  <h2 class="text-2xl font-semibold mb-6 text-center text-slate-800">Vive Projects</h2>
-  <div id="iframe-container" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
-</section>
+      <h2 class="text-2xl font-semibold mb-6 text-center text-slate-800">Vive Projects</h2>
+      <div id="iframe-container" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+    </section>
 
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-/>
-
-
-<script>
-  const iframeList = [
-    { url: "https://victorsingha.github.io/sql/" },
-    { url: "https://freelottieanimations.github.io/" },
-    { url: "https://victorsingha.github.io/maticon/" },
-    { url: "https://victorsingha.github.io/RandomUsers/" },
-    { url: "https://antiquekingdom.github.io/" },
-    { url: "https://victorsingha.github.io/ace/" },
-    { url: "https://victorsingha.github.io/powershell/" },
-    { url: "https://victorsingha.github.io/map/" }
-  ];
-
-  const container = document.getElementById('iframe-container');
-
-  iframeList.forEach(item => {
-    const div = document.createElement('div');
-    div.className = "flex flex-col items-center bg-white card rounded-lg p-4";
-
-    // Create icon link
-    const iconLink = document.createElement('a');
-    iconLink.href = item.url;
-    iconLink.target = "_blank";
-    iconLink.className = "text-blue-500 text-2xl mb-2 hover:text-blue-700";
-    iconLink.innerHTML = '<i class="fas fa-external-link-alt"></i>'; // Font Awesome icon
-
-    // Create iframe
-    const iframe = document.createElement('iframe');
-    iframe.src = item.url;
-    iframe.sandbox = "allow-scripts allow-same-origin allow-forms";
-    iframe.loading = "lazy";
-    iframe.className = "w-full h-64 rounded border";
-
-    div.appendChild(iconLink);
-    div.appendChild(iframe);
-    container.appendChild(div);
-  });
-</script>
-    
-   
   </div>
 
   <!-- Scripts -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.32.3/ace.min.js"></script>
 
   <script>
-    // Particle Background (Light)
-    window.addEventListener('load', () => {
-      particlesJS('particles-js', {
-        particles: {
-          number: { value: 80, density: { enable: true, value_area: 800 } },
-          color: { value: "#94a3b8" },
-          shape: { type: "circle" },
-          opacity: { value: 0.4, random: true },
-          size: { value: 3, random: true },
-          line_linked: { enable: true, distance: 120, color: "#cbd5e1", opacity: 0.4, width: 1 },
-          move: { enable: true, speed: 1.2, out_mode: "bounce" }
-        },
-        interactivity: {
-          events: { onhover: { enable: true, mode: ["grab", "repulse"] }, onclick: { enable: true, mode: ["push"] } },
-          modes: { grab: { distance: 140 }, repulse: { distance: 100 }, push: { particles_nb: 3 } }
-        },
-        retina_detect: true
-      });
+    // Particles Background
+    particlesJS('particles-js', {
+      particles: {
+        number: { value: 80, density: { enable: true, value_area: 800 } },
+        color: { value: "#94a3b8" },
+        shape: { type: "circle" },
+        opacity: { value: 0.4, random: true },
+        size: { value: 3, random: true },
+        line_linked: { enable: true, distance: 120, color: "#cbd5e1", opacity: 0.4, width: 1 },
+        move: { enable: true, speed: 1.2, out_mode: "bounce" }
+      },
+      interactivity: {
+        events: { onhover: { enable: true, mode: ["grab","repulse"] }, onclick: { enable: true, mode: ["push"] } },
+        modes: { grab: { distance: 140 }, repulse: { distance: 100 }, push: { particles_nb: 3 } }
+      },
+      retina_detect: true
     });
 
-    // Ace Editor
+    // ACE Editor
     const editor = ace.edit("editor");
     editor.setTheme("ace/theme/xcode");
     editor.session.setMode("ace/mode/sql");
@@ -241,7 +173,6 @@
       enableSnippets: true,
       enableBasicAutocompletion: true
     });
-
     editor.setValue(
 `SELECT 
   s.name AS SchemaName,
@@ -255,30 +186,54 @@ JOIN sys.schemas s ON t.schema_id = s.schema_id
 JOIN sys.indexes i ON t.object_id = i.object_id
 JOIN sys.partitions p ON i.object_id = p.object_id AND i.index_id = p.index_id
 JOIN sys.allocation_units a ON p.partition_id = a.container_id
-WHERE s.name = 'hangfire'  -- replace with your schema name
+WHERE s.name = 'hangfire'
 GROUP BY s.name, t.name, p.rows
-ORDER BY TotalSizeMB DESC;`
-    , -1);
+ORDER BY TotalSizeMB DESC;`, -1);
+
+    // Iframes
+    const iframeList = [
+      "https://victorsingha.github.io/sql/",
+      "https://freelottieanimations.github.io/",
+      "https://victorsingha.github.io/maticon/",
+      "https://victorsingha.github.io/RandomUsers/",
+      "https://antiquekingdom.github.io/",
+      "https://victorsingha.github.io/ace/",
+      "https://victorsingha.github.io/powershell/",
+      "https://victorsingha.github.io/map/"
+    ];
+
+    const container = document.getElementById('iframe-container');
+    iframeList.forEach(url => {
+      const div = document.createElement('div');
+      div.className = "flex flex-col items-center bg-white card rounded-lg p-4";
+
+      const iconLink = document.createElement('a');
+      iconLink.href = url;
+      iconLink.target = "_blank";
+      iconLink.className = "text-blue-500 text-2xl mb-2 hover:text-blue-700";
+      iconLink.innerHTML = '<i class="fas fa-external-link-alt"></i>';
+
+      const iframe = document.createElement('iframe');
+      iframe.src = url;
+      iframe.sandbox = "allow-scripts allow-same-origin allow-forms";
+      iframe.loading = "lazy";
+      iframe.className = "w-full h-64 rounded border";
+
+      div.appendChild(iconLink);
+      div.appendChild(iframe);
+      container.appendChild(div);
+    });
   </script>
-  
-  
+
   <!-- Footer -->
-<footer class="mt-8 mb-8 text-center text-gray-500 dark:text-gray-400 text-sm transition-colors duration-300 flex justify-center items-center gap-6">
-  <a href="https://in.linkedin.com/in/victor-singha-48b479148" target="_blank" class="underline hover:text-gray-700 dark:hover:text-gray-200 flex items-center gap-1">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7 0h-4.98v16h4.98v-8.05c0-4.45 5.98-4.81 5.98 0v8.05h4.98v-10.95c0-9.03-9.82-8.71-10.98-4.26v-1.79z"/>
-    </svg>
-  </a>
-  <a href="https://github.com/victorsingha" target="_blank" class="underline hover:text-gray-700 dark:hover:text-gray-200 flex items-center gap-1">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.438 9.8 8.205 11.385.6.112.82-.26.82-.577 0-.285-.01-1.04-.015-2.04-3.338.726-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.744.083-.729.083-.729 1.205.085 1.84 1.238 1.84 1.238 1.07 1.835 2.807 1.305 3.492.997.108-.776.418-1.305.762-1.605-2.665-.304-5.467-1.335-5.467-5.933 0-1.31.468-2.38 1.236-3.22-.124-.303-.536-1.523.117-3.176 0 0 1.008-.322 3.3 1.23a11.52 11.52 0 013.003-.403c1.018.005 2.045.138 3.003.403 2.29-1.552 3.296-1.23 3.296-1.23.655 1.653.243 2.873.12 3.176.77.84 1.236 1.91 1.236 3.22 0 4.61-2.807 5.625-5.479 5.922.43.37.823 1.096.823 2.21 0 1.595-.015 2.883-.015 3.274 0 .32.218.694.825.576C20.565 22.296 24 17.798 24 12.5 24 5.87 18.63.5 12 .5z"/>
-    </svg>
-  </a>
-</footer>
+  <footer class="mt-8 mb-8 text-center text-gray-500 text-sm flex justify-center items-center gap-6">
+    <a href="https://in.linkedin.com/in/victor-singha-48b479148" target="_blank" class="underline hover:text-gray-700 flex items-center gap-1">
+      <i class="fab fa-linkedin"></i> LinkedIn
+    </a>
+    <a href="https://github.com/victorsingha" target="_blank" class="underline hover:text-gray-700 flex items-center gap-1">
+      <i class="fab fa-github"></i> GitHub
+    </a>
+  </footer>
 
-  
 </body>
-
-
-
 </html>
