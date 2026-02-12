@@ -1,239 +1,179 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Victor</title>
+
+  <!-- SEO -->
+  <title>Victor Singha | Full Stack Developer</title>
+  <meta name="description" content="Victor Singha is a Full Stack Developer specializing in C#, Angular, Web API, SQL Server and enterprise-grade web applications." />
+  <meta name="keywords" content="Victor Singha, Full Stack Developer, Angular Developer, C# Developer, SQL Server, Portfolio" />
+  <meta name="author" content="Victor Singha" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Victor Singha | Full Stack Developer" />
+  <meta property="og:description" content="Portfolio of Victor Singha - Enterprise Application Developer." />
+  <meta property="og:type" content="website" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Bitcount+Single+Ink&display=swap" rel="stylesheet">
+
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-  
+
   <style>
     body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #f8fafc;
-      color: #1e293b;
-    }
-
-    #particles-js {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    h1, h2, p, a {
-      text-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
-    }
-
-    a {
-      color: #0ea5e9;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .card {
+      font-family: 'Bitcount Single Ink', sans-serif;
       background-color: #ffffff;
-      border: 1px solid #e2e8f0;
-      transition: all 0.3s ease;
-    }
-    .card:hover {
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-      transform: translateY(-4px);
+      color: #111827;
     }
 
-    iframe {
-      width: 100%;
-      height: 400px;
-      border: 0;
-      background: #fff;
+    .section-spacing {
+      padding-top: 90px;
+      padding-bottom: 90px;
+    }
+
+    .card-hover {
+      transition: 0.3s ease;
+    }
+
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
     }
   </style>
 </head>
-<body class="relative overflow-x-hidden">
 
-  <!-- Particles Background -->
-  <div id="particles-js"></div>
+<body class="antialiased">
 
-  <div class="relative z-10 min-h-screen flex flex-col justify-center items-center text-center px-4">
+  <!-- HERO -->
+  <header class="min-h-screen flex flex-col justify-center items-center text-center px-6">
+    <h1 class="text-6xl md:text-7xl font-bold tracking-tight leading-tight">
+      Victor Singha
+    </h1>
+    <p class="mt-6 text-xl text-gray-600 max-w-2xl">
+      Full Stack Developer building scalable enterprise applications using C#, Angular, Web API, and SQL Server.
+    </p>
 
-    <!-- Header: Lottie + Name -->
-    <header class="py-12 w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-center gap-8">
-      <div class="flex-1">
-        <lottie-player
-          src="https://assets4.lottiefiles.com/packages/lf20_ydo1amjm.json"
-          background="transparent"
-          speed="1"
-          loop
-          autoplay
-          style="width:100%; max-width:400px; height:auto;">
-        </lottie-player>
+    <div class="mt-10 flex gap-6">
+      <a href="mailto:victor.singha@outlook.com" class="px-6 py-3 border border-black hover:bg-black hover:text-white transition">
+        Contact Me
+      </a>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about" class="section-spacing max-w-4xl mx-auto px-6 text-center">
+    <h2 class="text-3xl font-bold mb-6">About Me</h2>
+    <p class="text-gray-600 leading-relaxed text-lg">
+      I design and build high-performance backend systems with .NET and create modern frontend applications using Angular.
+      My focus is clean architecture, scalability, and enterprise reliability.
+    </p>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="section-spacing bg-gray-50 px-6">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-12">Featured Projects</h2>
+
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div class="p-6 bg-white border card-hover">
+          <h3 class="text-xl font-semibold mb-3">Fundoo Application</h3>
+          <p class="text-gray-600">Google Keep clone with note management and secure backend integration.</p>
+        </div>
+
+        <div class="p-6 bg-white border card-hover">
+          <h3 class="text-xl font-semibold mb-3">PickItUp</h3>
+          <p class="text-gray-600">Delivery management platform for customers and drivers.</p>
+        </div>
+
+        <div class="p-6 bg-white border card-hover">
+          <h3 class="text-xl font-semibold mb-3">Employee Payroll App</h3>
+          <p class="text-gray-600">Enterprise payroll system with reporting and salary processing.</p>
+        </div>
+
+        <div class="p-6 bg-white border card-hover">
+          <h3 class="text-xl font-semibold mb-3">Bookstore App</h3>
+          <p class="text-gray-600">Angular application with backend-driven dynamic content.</p>
+        </div>
+
+        <div class="p-6 bg-white border card-hover">
+          <h3 class="text-xl font-semibold mb-3">Address Book Console App</h3>
+          <p class="text-gray-600">Lightweight contact management console application.</p>
+        </div>
       </div>
-      <div class="flex-1 text-center md:text-left">
-        <h1 class="text-5xl font-bold drop-shadow-xl text-slate-800">Hi, I'm Victor</h1>
-        <p class="text-gray-600 mt-2 text-lg">Developer | Designer | Dreamer</p>
-      </div>
-    </header>
+    </div>
+  </section>
 
-    <!-- About Section -->
-    <section id="about" class="max-w-2xl py-6">
-      <h2 class="text-2xl font-semibold mb-4 text-slate-800">About Me</h2>
-      <p class="text-gray-700 leading-relaxed">
-        I'm a developer passionate about building robust and scalable web applications using C#, Angular, Web API, SQL Server, and IIS.
-      </p>
-    </section>
+  <!-- LIVE PROJECTS (IFRAMES LOOPED VIA JS) -->
+  <section id="live-projects" class="section-spacing px-6">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-12">Live Projects</h2>
+      <div id="project-container" class="grid gap-10 md:grid-cols-2"></div>
+    </div>
+  </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="py-6 max-w-6xl mx-auto px-4">
-      <h2 class="text-2xl font-semibold mb-8 text-center text-slate-800">History 1947 Projects</h2>
-      <div class="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        <div class="card p-6 rounded">
-          <h3 class="text-lg font-semibold mb-2 text-slate-700">Fundoo Application</h3>
-          <p class="text-gray-600">A clone of Google Keep, where users can create, edit, and delete notes. Built with modern web technologies.</p>
-        </div>
-        <div class="card p-6 rounded">
-          <h3 class="text-lg font-semibold mb-2 text-slate-700">PickItUp</h3>
-          <p class="text-gray-600">A delivery app supporting both customer and user. Customers book services while drivers manage deliveries.</p>
-        </div>
-        <div class="card p-6 rounded">
-          <h3 class="text-lg font-semibold mb-2 text-slate-700">Employee Payroll App</h3>
-          <p class="text-gray-600">Manage employee payroll, calculate salaries, and generate reports with a clean and responsive UI.</p>
-        </div>
-        <div class="card p-6 rounded">
-          <h3 class="text-lg font-semibold mb-2 text-slate-700">Bookstore App</h3>
-          <p class="text-gray-600">Browse and search for books. Built with Angular and backend integration for dynamic content.</p>
-        </div>
-        <div class="card p-6 rounded">
-          <h3 class="text-lg font-semibold mb-2 text-slate-700">Address Book Console App</h3>
-          <p class="text-gray-600">A simple console app to store and manage contact details like name, phone, and address.</p>
-        </div>
-      </div>
-    </section>
+  <!-- CONTACT -->
+  <section id="contact" class="section-spacing text-center px-6 bg-gray-50">
+    <h2 class="text-3xl font-bold mb-6">Contact</h2>
+    <p class="text-lg text-gray-600">
+      <a href="mailto:victor.singha@outlook.com" class="underline hover:text-black">
+        victor.singha@outlook.com
+      </a>
+    </p>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-6">
-      <h2 class="text-2xl font-semibold mb-4 text-slate-800">Contact</h2>
-      <p><a href="mailto:victor.singha@outlook.com">victor.singha@outlook.com</a></p>
-    </section>
+    <div class="mt-6 flex justify-center gap-6 text-lg">
+      <a href="https://in.linkedin.com/in/victor-singha-48b479148" target="_blank" class="hover:underline">
+        LinkedIn
+      </a>
+      <a href="https://github.com/victorsingha" target="_blank" class="hover:underline">
+        GitHub
+      </a>
+    </div>
+  </section>
 
-    <!-- ACE Editor Section -->
-    <section id="sql-editor" class="py-10 w-full max-w-6xl px-4">
-      <h2 class="text-2xl font-semibold mb-4 text-center text-slate-800">SQL Scripts</h2>
-      <div class="overflow-hidden border border-gray-300 shadow-md rounded">
-        <div id="editor" class="h-[400px] w-full"></div>
-      </div>
-    </section>
+  <!-- FOOTER -->
+  <footer class="py-6 text-center text-gray-400 text-sm">
+    © 2026 Victor Singha. All rights reserved.
+  </footer>
 
-    <!-- Iframes Section -->
-    <section id="iframes" class="py-10 w-full max-w-6xl px-4">
-      <h2 class="text-2xl font-semibold mb-6 text-center text-slate-800">Vive Projects</h2>
-      <div id="iframe-container" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
-    </section>
-
-  </div>
-
-  <!-- Scripts -->
-  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.32.3/ace.min.js"></script>
-
+  <!-- JAVASCRIPT LOOP -->
   <script>
-    // Particles Background
-    particlesJS('particles-js', {
-      particles: {
-        number: { value: 80, density: { enable: true, value_area: 800 } },
-        color: { value: "#94a3b8" },
-        shape: { type: "circle" },
-        opacity: { value: 0.4, random: true },
-        size: { value: 3, random: true },
-        line_linked: { enable: true, distance: 120, color: "#cbd5e1", opacity: 0.4, width: 1 },
-        move: { enable: true, speed: 1.2, out_mode: "bounce" }
-      },
-      interactivity: {
-        events: { onhover: { enable: true, mode: ["grab","repulse"] }, onclick: { enable: true, mode: ["push"] } },
-        modes: { grab: { distance: 140 }, repulse: { distance: 100 }, push: { particles_nb: 3 } }
-      },
-      retina_detect: true
-    });
-
-    // ACE Editor
-    const editor = ace.edit("editor");
-    editor.setTheme("ace/theme/xcode");
-    editor.session.setMode("ace/mode/sql");
-    editor.setOptions({
-      fontSize: "14px",
-      showPrintMargin: false,
-      wrap: true,
-      useWorker: false,
-      enableLiveAutocompletion: true,
-      enableSnippets: true,
-      enableBasicAutocompletion: true
-    });
-    editor.setValue(
-`SELECT 
-  s.name AS SchemaName,
-  t.name AS TableName,
-  p.rows AS RowCounts,
-  CAST(ROUND((SUM(a.total_pages) * 8.0) / 1024, 2) AS DECIMAL(18,2)) AS TotalSizeMB,
-  CAST(ROUND((SUM(a.used_pages) * 8.0) / 1024, 2) AS DECIMAL(18,2)) AS UsedSizeMB,
-  CAST(ROUND((SUM(a.data_pages) * 8.0) / 1024, 2) AS DECIMAL(18,2)) AS DataSizeMB
-FROM sys.tables t
-JOIN sys.schemas s ON t.schema_id = s.schema_id
-JOIN sys.indexes i ON t.object_id = i.object_id
-JOIN sys.partitions p ON i.object_id = p.object_id AND i.index_id = p.index_id
-JOIN sys.allocation_units a ON p.partition_id = a.container_id
-WHERE s.name = 'hangfire'
-GROUP BY s.name, t.name, p.rows
-ORDER BY TotalSizeMB DESC;`, -1);
-
-    // Iframes
-    const iframeList = [
-      "https://victorsingha.github.io/sql/",
-      "https://freelottieanimations.github.io/",
-      "https://victorsingha.github.io/maticon/",
-      "https://victorsingha.github.io/RandomUsers/",
-      "https://antiquekingdom.github.io/",
-      "https://victorsingha.github.io/ace/",
-      "https://victorsingha.github.io/powershell/",
-      "https://victorsingha.github.io/map/"
+    const projects = [
+      { name: "SQL Tools", url: "https://victorsingha.github.io/sql/", title: "SQL Tools Project" },
+      { name: "Lottie Animations", url: "https://freelottieanimations.github.io/", title: "Lottie Animation Collection" },
+      { name: "Maticon Icons", url: "https://victorsingha.github.io/maticon/", title: "Maticon Icon Library" },
+      { name: "Random Users", url: "https://victorsingha.github.io/RandomUsers/", title: "Random Users Angular App" },
+      { name: "Antique Kingdom", url: "https://antiquekingdom.github.io/", title: "Antique Kingdom Website" },
+      { name: "ACE Editor", url: "https://victorsingha.github.io/ace/", title: "Online ACE Editor" },
+      { name: "PowerShell Tools", url: "https://victorsingha.github.io/powershell/", title: "PowerShell Utility Tools" },
+      { name: "Map Application", url: "https://victorsingha.github.io/map/", title: "Interactive Map Application" }
     ];
 
-    const container = document.getElementById('iframe-container');
-    iframeList.forEach(url => {
-      const div = document.createElement('div');
-      div.className = "flex flex-col items-center bg-white card rounded-lg p-4";
+    const container = document.getElementById("project-container");
 
-      const iconLink = document.createElement('a');
-      iconLink.href = url;
-      iconLink.target = "_blank";
-      iconLink.className = "text-blue-500 text-2xl mb-2 hover:text-blue-700";
-      iconLink.innerHTML = '<i class="fas fa-external-link-alt"></i>';
+    projects.forEach(project => {
+      const card = document.createElement("div");
+      card.className = "border rounded-lg overflow-hidden card-hover";
 
-      const iframe = document.createElement('iframe');
-      iframe.src = url;
-      iframe.sandbox = "allow-scripts allow-same-origin allow-forms";
-      iframe.loading = "lazy";
-      iframe.className = "w-full h-64 rounded border";
+      card.innerHTML = `
+        <div class="p-4 flex justify-between items-center border-b bg-white">
+          <h3 class="font-semibold">${project.name}</h3>
+          <a href="${project.url}" target="_blank" class="text-sm underline hover:text-black">
+            Visit →
+          </a>
+        </div>
+        <iframe 
+          src="${project.url}"
+          title="${project.title}"
+          loading="lazy"
+          class="w-full h-80">
+        </iframe>
+      `;
 
-      div.appendChild(iconLink);
-      div.appendChild(iframe);
-      container.appendChild(div);
+      container.appendChild(card);
     });
   </script>
-
-  <!-- Footer -->
-  <footer class="mt-8 mb-8 text-center text-gray-500 text-sm flex justify-center items-center gap-6">
-    <a href="https://in.linkedin.com/in/victor-singha-48b479148" target="_blank" class="underline hover:text-gray-700 flex items-center gap-1">
-      <i class="fab fa-linkedin"></i> LinkedIn
-    </a>
-    <a href="https://github.com/victorsingha" target="_blank" class="underline hover:text-gray-700 flex items-center gap-1">
-      <i class="fab fa-github"></i> GitHub
-    </a>
-  </footer>
 
 </body>
 </html>
