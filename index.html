@@ -3,177 +3,102 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Victor Singha</title>
 
-  <!-- SEO -->
-  <title>Victor Singha | Full Stack Developer</title>
-  <meta name="description" content="Victor Singha is a Full Stack Developer specializing in C#, Angular, Web API, SQL Server and enterprise-grade web applications." />
-  <meta name="keywords" content="Victor Singha, Full Stack Developer, Angular Developer, C# Developer, SQL Server, Portfolio" />
-  <meta name="author" content="Victor Singha" />
+  <!-- Inter Thin Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Victor Singha | Full Stack Developer" />
-  <meta property="og:description" content="Portfolio of Victor Singha - Enterprise Application Developer." />
-  <meta property="og:type" content="website" />
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Bitcount+Single+Ink&display=swap" rel="stylesheet">
-
-  <!-- Tailwind -->
+  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
   <style>
     body {
-      font-family: 'Bitcount Single Ink', sans-serif;
-      background-color: #ffffff;
-      color: #111827;
-    }
-
-    .section-spacing {
-      padding-top: 90px;
-      padding-bottom: 90px;
-    }
-
-    .card-hover {
-      transition: 0.3s ease;
-    }
-
-    .card-hover:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      font-family: 'Inter', sans-serif;
     }
   </style>
 </head>
 
-<body class="antialiased">
+<body class="text-gray-900 font-light">
 
-  <!-- HERO -->
-  <header class="min-h-screen flex flex-col justify-center items-center text-center px-6">
-    <h1 class="text-6xl md:text-7xl font-bold tracking-tight leading-tight">
-      Victor Singha
-    </h1>
-    <p class="mt-6 text-xl text-gray-600 max-w-2xl">
-      Full Stack Developer building scalable enterprise applications using C#, Angular, Web API, and SQL Server.
-    </p>
+  <!-- ===== SECTION 1 : LANDING ===== -->
+  <section class="min-h-screen bg-[#eeffcc] flex items-center justify-center px-6">
 
-    <div class="mt-10 flex gap-6">
-      <a href="mailto:victor.singha@outlook.com" class="px-6 py-3 border border-black hover:bg-black hover:text-white transition">
-        Contact Me
-      </a>
-    </div>
-  </header>
+    <div class="flex flex-col md:flex-row items-center gap-20">
 
-  <!-- ABOUT -->
-  <section id="about" class="section-spacing max-w-4xl mx-auto px-6 text-center">
-    <h2 class="text-3xl font-bold mb-6">About Me</h2>
-    <p class="text-gray-600 leading-relaxed text-lg">
-      I design and build high-performance backend systems with .NET and create modern frontend applications using Angular.
-      My focus is clean architecture, scalability, and enterprise reliability.
-    </p>
-  </section>
+      <!-- Image -->
+      <img 
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmUXNGmIC29WVARH9h5F810Aff2_Pm9shqig&s"
+        class="object-cover"
+      />
 
-  <!-- PROJECTS -->
-  <section id="projects" class="section-spacing bg-gray-50 px-6">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-3xl font-bold text-center mb-12">Featured Projects</h2>
+      <!-- Text -->
+      <div class="text-center md:text-left">
+        <h1 class="text-6xl font-extralight tracking-wide">
+          Victor Singha
+        </h1>
 
-      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        <div class="p-6 bg-white border card-hover">
-          <h3 class="text-xl font-semibold mb-3">Fundoo Application</h3>
-          <p class="text-gray-600">Google Keep clone with note management and secure backend integration.</p>
-        </div>
+        <p class="mt-6 text-xl font-thin tracking-widest text-gray-700">
+          I debug for fun and sometimes on purpose.
+        </p>
 
-        <div class="p-6 bg-white border card-hover">
-          <h3 class="text-xl font-semibold mb-3">PickItUp</h3>
-          <p class="text-gray-600">Delivery management platform for customers and drivers.</p>
-        </div>
+        <!-- Social Links -->
+        <div class="mt-10 flex gap-8 justify-center md:justify-start text-sm tracking-widest">
+          <a href="https://in.linkedin.com/in/victor-singha-48b479148" target="_blank" 
+             class="hover:underline">
+            LinkedIn
+          </a>
 
-        <div class="p-6 bg-white border card-hover">
-          <h3 class="text-xl font-semibold mb-3">Employee Payroll App</h3>
-          <p class="text-gray-600">Enterprise payroll system with reporting and salary processing.</p>
-        </div>
-
-        <div class="p-6 bg-white border card-hover">
-          <h3 class="text-xl font-semibold mb-3">Bookstore App</h3>
-          <p class="text-gray-600">Angular application with backend-driven dynamic content.</p>
-        </div>
-
-        <div class="p-6 bg-white border card-hover">
-          <h3 class="text-xl font-semibold mb-3">Address Book Console App</h3>
-          <p class="text-gray-600">Lightweight contact management console application.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- LIVE PROJECTS (IFRAMES LOOPED VIA JS) -->
-  <section id="live-projects" class="section-spacing px-6">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-3xl font-bold text-center mb-12">Live Projects</h2>
-      <div id="project-container" class="grid gap-10 md:grid-cols-2"></div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" class="section-spacing text-center px-6 bg-gray-50">
-    <h2 class="text-3xl font-bold mb-6">Contact</h2>
-    <p class="text-lg text-gray-600">
-      <a href="mailto:victor.singha@outlook.com" class="underline hover:text-black">
-        victor.singha@outlook.com
-      </a>
-    </p>
-
-    <div class="mt-6 flex justify-center gap-6 text-lg">
-      <a href="https://in.linkedin.com/in/victor-singha-48b479148" target="_blank" class="hover:underline">
-        LinkedIn
-      </a>
-      <a href="https://github.com/victorsingha" target="_blank" class="hover:underline">
-        GitHub
-      </a>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="py-6 text-center text-gray-400 text-sm">
-    © 2026 Victor Singha. All rights reserved.
-  </footer>
-
-  <!-- JAVASCRIPT LOOP -->
-  <script>
-    const projects = [
-      { name: "SQL Tools", url: "https://victorsingha.github.io/sql/", title: "SQL Tools Project" },
-      { name: "Lottie Animations", url: "https://freelottieanimations.github.io/", title: "Lottie Animation Collection" },
-      { name: "Maticon Icons", url: "https://victorsingha.github.io/maticon/", title: "Maticon Icon Library" },
-      { name: "Random Users", url: "https://victorsingha.github.io/RandomUsers/", title: "Random Users Angular App" },
-      { name: "Antique Kingdom", url: "https://antiquekingdom.github.io/", title: "Antique Kingdom Website" },
-      { name: "ACE Editor", url: "https://victorsingha.github.io/ace/", title: "Online ACE Editor" },
-      { name: "PowerShell Tools", url: "https://victorsingha.github.io/powershell/", title: "PowerShell Utility Tools" },
-      { name: "Map Application", url: "https://victorsingha.github.io/map/", title: "Interactive Map Application" }
-    ];
-
-    const container = document.getElementById("project-container");
-
-    projects.forEach(project => {
-      const card = document.createElement("div");
-      card.className = "border rounded-lg overflow-hidden card-hover";
-
-      card.innerHTML = `
-        <div class="p-4 flex justify-between items-center border-b bg-white">
-          <h3 class="font-semibold">${project.name}</h3>
-          <a href="${project.url}" target="_blank" class="text-sm underline hover:text-black">
-            Visit →
+          <a href="https://github.com/victorsingha" target="_blank" 
+             class="hover:underline">
+            GitHub
           </a>
         </div>
-        <iframe 
-          src="${project.url}"
-          title="${project.title}"
-          loading="lazy"
-          class="w-full h-80">
-        </iframe>
-      `;
 
-      container.appendChild(card);
-    });
-  </script>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ===== SECTION 2 : PROJECTS ===== -->
+  <section class="bg-white py-32 px-6">
+
+    <div class="max-w-7xl mx-auto">
+
+      <h2 class="text-4xl font-extralight mb-20 tracking-wide">
+        Projects
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-24">
+
+        <iframe class="w-full h-[420px]"
+          src="https://victorsingha.github.io/sql/">
+        </iframe>
+
+        <iframe class="w-full h-[420px]"
+          src="https://victorsingha.github.io/powershell/">
+        </iframe>
+
+        <iframe class="w-full h-[420px]"
+          src="https://victorsingha.github.io/maticon/">
+        </iframe>
+
+        <iframe class="w-full h-[420px]"
+          src="https://freelottieanimations.github.io/">
+        </iframe>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-white py-10 px-6 text-center text-xs tracking-widest text-gray-500">
+    © 2026 Victor Singha. All rights reserved.
+  </footer>
 
 </body>
 </html>
