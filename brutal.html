@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Victor Singha — Ultra Brutalism</title>
+
+<meta name="google-site-verification"
+content="Pb0sazMsgnJtyEbYYCu2UqI9A-g2SPqjlOZy0_M1P4Q" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+    background:#ffffff;
+    color:black;
+    overflow-x:hidden;
+}
+
+/* MASSIVE TYPOGRAPHY */
+.massive{
+    font-family:'Anton', sans-serif;
+    font-size:clamp(6rem,18vw,18rem);
+    line-height:0.75;
+    letter-spacing:-6px;
+}
+
+/* system text */
+.mono{
+    font-family:'IBM Plex Mono', monospace;
+}
+
+/* brutal borders */
+.brutal{
+    border:5px solid black;
+}
+
+/* chaos positioning */
+.float-1{
+    transform:rotate(-6deg);
+}
+
+.float-2{
+    transform:rotate(5deg);
+}
+
+.float-3{
+    transform:translateX(40px);
+}
+
+/* aggressive hover */
+a:hover{
+    background:black;
+    color:white;
+}
+
+/* red warning stripe */
+.warning{
+    background:#ff0033;
+    color:white;
+    font-weight:bold;
+    padding:6px;
+}
+
+/* noisy overlay */
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:repeating-linear-gradient(
+        transparent,
+        transparent 2px,
+        rgba(0,0,0,0.04) 3px
+    );
+    pointer-events:none;
+}
+
+</style>
+</head>
+
+<body class="mono">
+
+<!-- ===== HERO CHAOS ===== -->
+
+<section class="relative min-h-screen p-8">
+
+<h1 id="glitch-title"
+class="massive absolute top-10 left-6">
+VICTOR
+</h1>
+
+<h1 class="massive absolute top-[35vh] right-6 float-1">
+SINGHA
+</h1>
+
+<div class="warning absolute bottom-6 left-6">
+SYSTEM UNSTABLE // HUMAN DETECTED
+</div>
+
+<p id="glitch-sub"
+class="absolute bottom-20 right-10 text-xl brutal p-4 bg-white float-2">
+Do you bleed?
+</p>
+
+<img
+src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpdO16yvb_PKvLwFPrxEoSfaC8HzNPrrc4AQ&s"
+class="absolute top-[40%] left-[30%] w-64 brutal float-3"/>
+
+</section>
+
+
+<!-- ===== PROJECT CHAOS ===== -->
+
+<section class="p-8 space-y-24">
+
+<h2 class="massive">UTENSILS</h2>
+
+<div class="grid md:grid-cols-2 gap-20">
+
+<div class="brutal p-2 float-1">
+<iframe class="w-full h-[420px]"
+src="https://victorsingha.github.io/sql/"></iframe>
+</div>
+
+<div class="brutal p-2 float-2">
+<iframe class="w-full h-[420px]"
+src="https://victorsingha.github.io/powershell/"></iframe>
+</div>
+
+<div class="brutal p-2 float-3">
+<iframe class="w-full h-[420px]"
+src="https://victorsingha.github.io/maticon/"></iframe>
+</div>
+
+<div class="brutal p-2 float-1">
+<iframe class="w-full h-[420px]"
+src="https://victorsingha.github.io/lottie/"></iframe>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ===== FOOTER ===== -->
+
+<footer class="warning text-center">
+© 2026 VICTOR SINGHA — THIS WEBSITE REJECTS COMFORT
+</footer>
+
+
+<script>
+const letters="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+function shuffleText(el,text,speed=20){
+let iteration=0;
+
+const interval=setInterval(()=>{
+el.innerText=text.split("").map((l,i)=>{
+if(i<iteration)return text[i];
+return letters[Math.floor(Math.random()*letters.length)];
+}).join("");
+
+if(iteration>=text.length)clearInterval(interval);
+
+iteration+=0.5;
+},speed);
+}
+
+const t=document.getElementById("glitch-title");
+const s=document.getElementById("glitch-sub");
+
+const tt=t.innerText;
+const st=s.innerText;
+
+t.innerText="";
+s.innerText="";
+
+setTimeout(()=>shuffleText(t,tt,25),200);
+setTimeout(()=>shuffleText(s,st,20),1000);
+</script>
+
+</body>
+</html>
