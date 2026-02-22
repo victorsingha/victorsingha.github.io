@@ -17,9 +17,10 @@ content="Pb0sazMsgnJtyEbYYCu2UqI9A-g2SPqjlOZy0_M1P4Q" />
 <style>
 
 body{
-    background:#ffffff;
+    background:white;
     color:black;
     overflow-x:hidden;
+    font-family:'IBM Plex Mono', monospace;
 }
 
 /* MASSIVE TYPOGRAPHY */
@@ -28,11 +29,7 @@ body{
     font-size:clamp(6rem,18vw,18rem);
     line-height:0.75;
     letter-spacing:-6px;
-}
-
-/* system text */
-.mono{
-    font-family:'IBM Plex Mono', monospace;
+ 
 }
 
 /* brutal borders */
@@ -40,26 +37,12 @@ body{
     border:5px solid black;
 }
 
-/* chaos positioning */
-.float-1{
-    transform:rotate(-6deg);
-}
+/* chaos transforms */
+.float-1{ transform:rotate(-6deg); }
+.float-2{ transform:rotate(5deg); }
+.float-3{ transform:translateX(40px); }
 
-.float-2{
-    transform:rotate(5deg);
-}
-
-.float-3{
-    transform:translateX(40px);
-}
-
-/* aggressive hover */
-a:hover{
-    background:black;
-    color:white;
-}
-
-/* red warning stripe */
+/* warning strip */
 .warning{
     background:#ff0033;
     color:white;
@@ -67,7 +50,17 @@ a:hover{
     padding:6px;
 }
 
-/* noisy overlay */
+/* aggressive hover */
+a{
+    font-weight:bold;
+    letter-spacing:2px;
+}
+a:hover{
+    background:black;
+    color:white;
+}
+
+/* scan noise */
 body::after{
     content:"";
     position:fixed;
@@ -83,38 +76,62 @@ body::after{
 </style>
 </head>
 
-<body class="mono">
+<body>
 
-<!-- ===== HERO CHAOS ===== -->
+<!-- ================= HERO ================= -->
 
 <section class="relative min-h-screen p-8">
 
-<h1 id="glitch-title"
+<!-- Titles -->
+<h1 id="glitch-victor"
 class="massive absolute top-10 left-6">
 VICTOR
 </h1>
 
-<h1 class="massive absolute top-[35vh] right-6 float-1">
+<h1 id="glitch-singha"
+class="massive absolute top-[35vh] right-6 float-1">
 SINGHA
 </h1>
+
+<!-- Social Links -->
+<div class="absolute top-6 right-6 flex flex-col gap-4">
+
+<a href="https://in.linkedin.com/in/victor-singha-48b479148"
+target="_blank"
+class="brutal bg-white p-3 float-2">
+OPEN_LINKEDIN ↗
+</a>
+
+<a href="https://github.com/victorsingha"
+target="_blank"
+class="brutal bg-white p-3 float-1">
+OPEN_GITHUB ↗
+</a>
+
+</div>
+
+<!-- Cat + Caption -->
+<div class="absolute top-[45%] left-[30%] float-3">
+
+<img
+src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpdO16yvb_PKvLwFPrxEoSfaC8HzNPrrc4AQ&s"
+class="w-64 brutal"/>
+
+<p id="glitch-sub"
+class="mt-4 text-xl brutal p-4 bg-white float-2">
+Do you bleed?
+</p>
+
+</div>
 
 <div class="warning absolute bottom-6 left-6">
 SYSTEM UNSTABLE // HUMAN DETECTED
 </div>
 
-<p id="glitch-sub"
-class="absolute bottom-20 right-10 text-xl brutal p-4 bg-white float-2">
-Do you bleed?
-</p>
-
-<img
-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpdO16yvb_PKvLwFPrxEoSfaC8HzNPrrc4AQ&s"
-class="absolute top-[40%] left-[30%] w-64 brutal float-3"/>
-
 </section>
 
 
-<!-- ===== PROJECT CHAOS ===== -->
+<!-- ================= PROJECTS ================= -->
 
 <section class="p-8 space-y-24">
 
@@ -147,14 +164,17 @@ src="https://victorsingha.github.io/lottie/"></iframe>
 </section>
 
 
-<!-- ===== FOOTER ===== -->
+<!-- ================= FOOTER ================= -->
 
 <footer class="warning text-center">
 © 2026 VICTOR SINGHA — THIS WEBSITE REJECTS COMFORT
 </footer>
 
 
+<!-- ================= GLITCH SCRIPT ================= -->
+
 <script>
+
 const letters="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
 function shuffleText(el,text,speed=20){
@@ -172,17 +192,26 @@ iteration+=0.5;
 },speed);
 }
 
-const t=document.getElementById("glitch-title");
-const s=document.getElementById("glitch-sub");
+/* elements */
+const victor=document.getElementById("glitch-victor");
+const singha=document.getElementById("glitch-singha");
+const sub=document.getElementById("glitch-sub");
 
-const tt=t.innerText;
-const st=s.innerText;
+/* original text */
+const vText=victor.innerText;
+const sText=singha.innerText;
+const subText=sub.innerText;
 
-t.innerText="";
-s.innerText="";
+/* clear */
+victor.innerText="";
+singha.innerText="";
+sub.innerText="";
 
-setTimeout(()=>shuffleText(t,tt,25),200);
-setTimeout(()=>shuffleText(s,st,20),1000);
+/* stagger animation */
+setTimeout(()=>shuffleText(victor,vText,25),200);
+setTimeout(()=>shuffleText(singha,sText,25),700);
+setTimeout(()=>shuffleText(sub,subText,20),1400);
+
 </script>
 
 </body>
