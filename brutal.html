@@ -1,217 +1,493 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Victor Singha — Ultra Brutalism</title>
-
-<meta name="google-site-verification"
-content="Pb0sazMsgnJtyEbYYCu2UqI9A-g2SPqjlOZy0_M1P4Q" />
-
-<script src="https://cdn.tailwindcss.com"></script>
-
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+<title>Victor Singha</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
+*{ margin:0; padding:0; box-sizing:border-box; }
 
-body{
-    background:white;
-    color:black;
-    overflow-x:hidden;
-    font-family:'IBM Plex Mono', monospace;
+html, body {
+  background: white;
+  color: black;
+  font-family: 'IBM Plex Mono', monospace;
+  overflow-x: hidden;
+  cursor: crosshair;
+  min-height: 100vh;
 }
 
-/* MASSIVE TYPOGRAPHY */
-.massive{
-    font-family:'Anton', sans-serif;
-    font-size:clamp(6rem,18vw,18rem);
-    line-height:0.75;
-    letter-spacing:-6px;
- 
+/* scanlines */
+body::after {
+  content:"";
+  position:fixed;
+  inset:0;
+  background:repeating-linear-gradient(transparent,transparent 2px,rgba(0,0,0,0.035) 3px);
+  pointer-events:none;
+  z-index:9000;
 }
 
-/* brutal borders */
-.brutal{
-    border:5px solid black;
+/* ============ SCATTERED HERO ============ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
 }
 
-/* chaos transforms */
-.float-1{ transform:rotate(-6deg); }
-.float-2{ transform:rotate(5deg); }
-.float-3{ transform:translateX(40px); }
-
-/* warning strip */
-.warning{
-    background:#ff0033;
-    color:white;
-    font-weight:bold;
-    padding:6px;
+/* BIG BG TEXT */
+.bg-victor {
+  font-family:'Anton',sans-serif;
+  font-size: clamp(10rem, 22vw, 22rem);
+  line-height:0.8;
+  position:absolute;
+  top: -20px;
+  left: -10px;
+  color: white;
+  -webkit-text-stroke: 3px black;
+  z-index:1;
+  user-select:none;
+  letter-spacing:-8px;
 }
 
-/* aggressive hover */
-a{
-    font-weight:bold;
-    letter-spacing:2px;
-}
-a:hover{
-    background:black;
-    color:white;
-}
-
-/* scan noise */
-body::after{
-    content:"";
-    position:fixed;
-    inset:0;
-    background:repeating-linear-gradient(
-        transparent,
-        transparent 2px,
-        rgba(0,0,0,0.04) 3px
-    );
-    pointer-events:none;
+.bg-singha {
+  font-family:'Anton',sans-serif;
+  font-size: clamp(8rem, 18vw, 18rem);
+  line-height:0.8;
+  position:absolute;
+  bottom: 60px;
+  right: -20px;
+  color: #ff0033;
+  z-index:1;
+  user-select:none;
+  letter-spacing:-6px;
+  transform: rotate(3deg);
 }
 
+/* IMAGE — thrown in the middle-ish */
+.hero-img {
+  position:absolute;
+  top: 18vh;
+  left: 22vw;
+  z-index:10;
+  border: 6px solid black;
+  width: clamp(160px, 20vw, 260px);
+  transform: rotate(-8deg);
+  filter: grayscale(100%) contrast(1.3);
+  box-shadow: 12px 12px 0 black;
+}
+
+/* CAPTION — ripped off */
+.caption {
+  position:absolute;
+  top: 18vh;
+  left: 44vw;
+  z-index:12;
+  background: #ff0033;
+  color: white;
+  font-weight:700;
+  font-size:1.1rem;
+  padding:8px 14px;
+  border:4px solid black;
+  transform:rotate(5deg);
+  letter-spacing:2px;
+  box-shadow: 6px 6px 0 black;
+}
+
+/* SOCIAL LINKS — thrown randomly */
+.link-li {
+  position:absolute;
+  z-index: 20;
+  border:5px solid black;
+  padding: 10px 16px;
+  font-weight:700;
+  letter-spacing:2px;
+  font-size:0.8rem;
+  text-decoration:none;
+  color:black;
+  background:white;
+  transition: background 0.05s, color 0.05s;
+  box-shadow: 5px 5px 0 black;
+}
+.link-li:hover { background:black; color:#ff0033; }
+
+.link-linkedin {
+  top: 6vh;
+  right: 8vw;
+  transform: rotate(-3deg);
+}
+.link-github {
+  top: 14vh;
+  right: 4vw;
+  transform: rotate(6deg);
+}
+
+/* SYSTEM UNSTABLE tag */
+.sys-tag {
+  position:absolute;
+  bottom: 12px;
+  left: 8px;
+  z-index:20;
+  background:#ff0033;
+  color:white;
+  font-weight:700;
+  font-size:0.65rem;
+  letter-spacing:3px;
+  padding:6px 12px;
+  transform:rotate(-1deg);
+}
+
+/* stray decorative elements */
+.x-mark {
+  position:absolute;
+  font-family:'Anton',sans-serif;
+  font-size:6rem;
+  color:#ff0033;
+  z-index:5;
+  user-select:none;
+  opacity:0.7;
+}
+.x-1 { top:30vh; left:6vw; transform:rotate(20deg); }
+.x-2 { top:60vh; right:30vw; transform:rotate(-15deg); font-size:3rem; color:black; }
+
+.line-h {
+  position:absolute;
+  height:5px;
+  background:black;
+  z-index:6;
+}
+.line-1 { width:40%; top:55vh; left:-2%; transform:rotate(-4deg); }
+.line-2 { width:20%; top:30vh; right:10%; transform:rotate(10deg); background:#ff0033; height:8px; }
+
+.dot {
+  position:absolute;
+  width:28px; height:28px;
+  border-radius:50%;
+  z-index:6;
+}
+.dot-1 { background:#ff0033; top:10vh; left:45vw; }
+.dot-2 { background:black; top:70vh; left:15vw; width:16px; height:16px; }
+
+.num-tag {
+  position:absolute;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:0.6rem;
+  letter-spacing:4px;
+  z-index:15;
+  border:2px solid black;
+  padding:3px 6px;
+}
+.num-1 { top:8vh; left:20vw; transform:rotate(90deg); }
+.num-2 { top:50vh; right:6vw; background:black; color:white; transform:rotate(-2deg); }
+
+
+/* ============ PROJECTS SECTION ============ */
+.projects-zone {
+  position:relative;
+  padding: 80px 0 160px 0;
+  overflow:hidden;
+  background:white;
+  border-top: 8px solid black;
+}
+
+/* UTENSILS heading — slammed */
+.utensils-head {
+  font-family:'Anton',sans-serif;
+  font-size: clamp(5rem, 15vw, 14rem);
+  line-height:0.8;
+  letter-spacing:-4px;
+  position:relative;
+  left: -8px;
+  color: white;
+  -webkit-text-stroke: 4px black;
+  padding-left: 40px;
+  margin-bottom: 60px;
+  transform: rotate(-1deg);
+  z-index:2;
+}
+
+.utensils-head span {
+  display:inline-block;
+  background:#ff0033;
+  color:white;
+  -webkit-text-stroke:0;
+  padding: 0 10px;
+  transform:skewX(-5deg);
+  margin-left:-4px;
+}
+
+/* each iframe card — chaotically placed */
+.iframe-wrap {
+  position:relative;
+  border:6px solid black;
+  display:inline-block;
+  box-shadow: 10px 10px 0 black;
+}
+
+.iframe-wrap iframe {
+  display:block;
+  border:none;
+  pointer-events:none;
+}
+
+.open-link {
+  display:block;
+  background:black;
+  color:white;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:0.65rem;
+  font-weight:700;
+  letter-spacing:3px;
+  text-decoration:none;
+  text-align:center;
+  padding:8px;
+  border-top:4px solid #ff0033;
+  transition: background 0.05s, color 0.05s;
+}
+.open-link:hover { background:#ff0033; color:white; }
+
+.frame-label {
+  position:absolute;
+  top:-28px;
+  left:0;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:0.65rem;
+  font-weight:700;
+  letter-spacing:3px;
+  background:black;
+  color:white;
+  padding:4px 10px;
+}
+
+/* Scattered layout via absolute-ish chaos inside a tall container */
+.frames-chaos {
+  position:relative;
+  min-height: 2400px;
+}
+
+.f1 {
+  position:absolute;
+  top:0;
+  left: 5%;
+  transform:rotate(-3deg);
+  width: clamp(300px, 45vw, 580px);
+}
+.f1 iframe { width:100%; height:400px; }
+
+.f2 {
+  position:absolute;
+  top:80px;
+  right:3%;
+  transform:rotate(4deg);
+  width: clamp(280px, 42vw, 540px);
+}
+.f2 iframe { width:100%; height:380px; }
+
+.f3 {
+  position:absolute;
+  top:560px;
+  left:20%;
+  transform:rotate(2deg);
+  width: clamp(300px, 46vw, 600px);
+}
+.f3 iframe { width:100%; height:420px; }
+
+.f4 {
+  position:absolute;
+  top:720px;
+  right:18%;
+  transform:rotate(-5deg);
+  width: clamp(260px, 38vw, 500px);
+}
+.f4 iframe { width:100%; height:370px; }
+
+/* rogue text floating in the frames section */
+.rogue {
+  position:absolute;
+  font-family:'Anton',sans-serif;
+  z-index:1;
+  user-select:none;
+}
+.rogue-1 {
+  font-size:clamp(3rem,8vw,9rem);
+  color:#ff0033;
+  top:440px;
+  left:1%;
+  transform:rotate(-90deg) translateX(-50%);
+  opacity:0.15;
+}
+.rogue-2 {
+  font-size:1rem;
+  color:black;
+  border:3px solid black;
+  padding:6px 12px;
+  top:1050px;
+  right:5%;
+  transform:rotate(8deg);
+  font-family:'IBM Plex Mono',monospace;
+  font-weight:700;
+  letter-spacing:2px;
+  background:#ff0033;
+  color:white;
+}
+.rogue-3 {
+  font-size:clamp(2rem,6vw,5rem);
+  top:1300px;
+  left:4%;
+  color:white;
+  -webkit-text-stroke:3px black;
+  transform:rotate(1deg);
+}
+
+/* ============ FOOTER ============ */
+footer {
+  background:#ff0033;
+  color:white;
+  font-weight:700;
+  font-size:0.75rem;
+  letter-spacing:4px;
+  text-align:center;
+  padding:16px;
+  border-top:6px solid black;
+  transform:skewY(-1deg);
+  position:relative;
+  z-index:100;
+}
+
+/* glitch animation */
+@keyframes glitch {
+  0%,100%{ text-shadow:none; transform:translate(0); }
+  20%{ text-shadow:-4px 0 #ff0033; transform:translate(3px); }
+  40%{ text-shadow:4px 0 cyan; transform:translate(-2px); }
+  60%{ text-shadow:-3px 0 #ff0033; transform:translate(1px); }
+}
+
+.glitch-run {
+  animation: glitch 0.4s steps(1) infinite;
+}
 </style>
 </head>
-
 <body>
 
-<!-- ================= HERO ================= -->
+<!-- ======= HERO ======= -->
+<section class="hero">
 
-<section class="relative min-h-screen p-8">
+  <div class="bg-victor" id="g-victor">VICTOR</div>
+  <div class="bg-singha" id="g-singha">SINGHA</div>
 
-<!-- Titles -->
-<h1 id="glitch-victor"
-class="massive absolute top-10 left-6">
-VICTOR
-</h1>
+  <img class="hero-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpdO16yvb_PKvLwFPrxEoSfaC8HzNPrrc4AQ&s" alt="Victor Singha">
 
-<h1 id="glitch-singha"
-class="massive absolute top-[35vh] right-6 float-1">
-SINGHA
-</h1>
+  <div class="caption" id="g-sub">DO YOU BLEED?</div>
 
-<!-- Social Links -->
-<div class="absolute top-6 right-6 flex flex-col gap-4">
+  <a class="link-li link-linkedin" href="https://in.linkedin.com/in/victor-singha-48b479148" target="_blank">OPEN_LINKEDIN ↗</a>
+  <a class="link-li link-github" href="https://github.com/victorsingha" target="_blank">OPEN_GITHUB ↗</a>
 
-<a href="https://in.linkedin.com/in/victor-singha-48b479148"
-target="_blank"
-class="brutal bg-white p-3 float-2">
-OPEN_LINKEDIN ↗
-</a>
+  <span class="x-mark x-1">✕</span>
+  <span class="x-mark x-2">✕</span>
 
-<a href="https://github.com/victorsingha"
-target="_blank"
-class="brutal bg-white p-3 float-1">
-OPEN_GITHUB ↗
-</a>
+  <div class="line-h line-1"></div>
+  <div class="line-h line-2"></div>
 
-</div>
+  <div class="dot dot-1"></div>
+  <div class="dot dot-2"></div>
 
-<!-- Cat + Caption -->
-<div class="absolute top-[45%] left-[30%] float-3">
+  <div class="num-tag num-1">SYS//01</div>
+  <div class="num-tag num-2">V.SINGHA_2026</div>
 
-<img
-src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpdO16yvb_PKvLwFPrxEoSfaC8HzNPrrc4AQ&s"
-class="w-64 brutal"/>
-
-<p id="glitch-sub"
-class="mt-4 text-xl brutal p-4 bg-white float-2">
-Do you bleed?
-</p>
-
-</div>
-
-<div class="warning absolute bottom-6 left-6">
-SYSTEM UNSTABLE // HUMAN DETECTED
-</div>
+  <div class="sys-tag">SYSTEM UNSTABLE // HUMAN DETECTED</div>
 
 </section>
 
 
-<!-- ================= PROJECTS ================= -->
+<!-- ======= PROJECTS ======= -->
+<section class="projects-zone">
 
-<section class="p-8 space-y-24">
+  <h2 class="utensils-head">UTEN<span>SILS</span></h2>
 
-<h2 class="massive">UTENSILS</h2>
+  <div class="frames-chaos">
 
-<div class="grid md:grid-cols-2 gap-20">
+    <div class="iframe-wrap f1">
+      <div class="frame-label">01 — SQL</div>
+      <iframe src="https://victorsingha.github.io/sql/" title="SQL"></iframe>
+      <a class="open-link" href="https://victorsingha.github.io/sql/" target="_blank">OPEN ↗</a>
+    </div>
 
-<div class="brutal p-2 float-1">
-<iframe class="w-full h-[420px]"
-src="https://victorsingha.github.io/sql/"></iframe>
-</div>
+    <div class="iframe-wrap f2">
+      <div class="frame-label">02 — POWERSHELL</div>
+      <iframe src="https://victorsingha.github.io/powershell/" title="PowerShell"></iframe>
+      <a class="open-link" href="https://victorsingha.github.io/powershell/" target="_blank">OPEN ↗</a>
+    </div>
 
-<div class="brutal p-2 float-2">
-<iframe class="w-full h-[420px]"
-src="https://victorsingha.github.io/powershell/"></iframe>
-</div>
+    <div class="iframe-wrap f3">
+      <div class="frame-label">03 — MATICON</div>
+      <iframe src="https://victorsingha.github.io/maticon/" title="Maticon"></iframe>
+      <a class="open-link" href="https://victorsingha.github.io/maticon/" target="_blank">OPEN ↗</a>
+    </div>
 
-<div class="brutal p-2 float-3">
-<iframe class="w-full h-[420px]"
-src="https://victorsingha.github.io/maticon/"></iframe>
-</div>
+    <div class="iframe-wrap f4">
+      <div class="frame-label">04 — LOTTIE</div>
+      <iframe src="https://victorsingha.github.io/lottie/" title="Lottie"></iframe>
+      <a class="open-link" href="https://victorsingha.github.io/lottie/" target="_blank">OPEN ↗</a>
+    </div>
 
-<div class="brutal p-2 float-1">
-<iframe class="w-full h-[420px]"
-src="https://victorsingha.github.io/lottie/"></iframe>
-</div>
+    <div class="rogue rogue-1">TOOLS</div>
+    <div class="rogue rogue-2">// HOVER TO INTERACT</div>
+    <div class="rogue rogue-3">BUILD<br>BREAK<br>SHIP</div>
 
-</div>
+  </div>
 
 </section>
 
 
-<!-- ================= FOOTER ================= -->
-
-<footer class="warning text-center">
-© 2026 VICTOR SINGHA — THIS WEBSITE REJECTS COMFORT
+<!-- ======= FOOTER ======= -->
+<footer>
+  © 2026 VICTOR SINGHA — THIS WEBSITE REJECTS COMFORT
 </footer>
 
 
-<!-- ================= GLITCH SCRIPT ================= -->
-
 <script>
+// shuffle glitch
+const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#%?/\\";
 
-const letters="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-
-function shuffleText(el,text,speed=20){
-let iteration=0;
-
-const interval=setInterval(()=>{
-el.innerText=text.split("").map((l,i)=>{
-if(i<iteration)return text[i];
-return letters[Math.floor(Math.random()*letters.length)];
-}).join("");
-
-if(iteration>=text.length)clearInterval(interval);
-
-iteration+=0.5;
-},speed);
+function shuffle(el, text, speed=22) {
+  let i = 0;
+  el.textContent = "";
+  const iv = setInterval(() => {
+    el.textContent = text.split("").map((c, idx) => {
+      if (idx < i) return text[idx];
+      return letters[Math.floor(Math.random() * letters.length)];
+    }).join("");
+    if (i >= text.length) clearInterval(iv);
+    i += 0.6;
+  }, speed);
 }
 
-/* elements */
-const victor=document.getElementById("glitch-victor");
-const singha=document.getElementById("glitch-singha");
-const sub=document.getElementById("glitch-sub");
+const gv = document.getElementById('g-victor');
+const gs = document.getElementById('g-singha');
+const gb = document.getElementById('g-sub');
 
-/* original text */
-const vText=victor.innerText;
-const sText=singha.innerText;
-const subText=sub.innerText;
+const tv = gv.textContent, ts = gs.textContent, tb = gb.textContent;
+gv.textContent = ""; gs.textContent = ""; gb.textContent = "";
 
-/* clear */
-victor.innerText="";
-singha.innerText="";
-sub.innerText="";
+setTimeout(() => shuffle(gv, tv, 20), 100);
+setTimeout(() => shuffle(gs, ts, 22), 500);
+setTimeout(() => shuffle(gb, tb, 18), 1000);
 
-/* stagger animation */
-setTimeout(()=>shuffleText(victor,vText,25),200);
-setTimeout(()=>shuffleText(singha,sText,25),700);
-setTimeout(()=>shuffleText(sub,subText,20),1400);
+// random glitch twitch on the big titles
+setInterval(() => {
+  const els = [gv, gs];
+  const el = els[Math.floor(Math.random()*els.length)];
+  el.classList.add('glitch-run');
+  setTimeout(() => el.classList.remove('glitch-run'), 400);
+}, 2800);
 
+// chaos: slight random nudges on iframes on load
+document.querySelectorAll('.iframe-wrap').forEach(el => {
+  const rx = (Math.random()-0.5)*30;
+  const ry = (Math.random()-0.5)*20;
+  const rot = (Math.random()-0.5)*8;
+  el.style.transform += ` translate(${rx}px,${ry}px) rotate(${rot}deg)`;
+});
 </script>
 
 </body>
