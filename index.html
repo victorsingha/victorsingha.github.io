@@ -1,201 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+       <meta name="google-site-verification" content="Pb0sazMsgnJtyEbYYCu2UqI9A-g2SPqjlOZy0_M1P4Q" />
     <title>Victor Singha</title>
-
-    <meta name="google-site-verification" content="Pb0sazMsgnJtyEbYYCu2UqI9A-g2SPqjlOZy0_M1P4Q" />
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Single+Ink&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik+Glitch+Pop&display=swap" rel="stylesheet">
-
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-
-        .rubik-glitch-pop-regular {
-            font-family: "Rubik Glitch Pop", system-ui;
-            font-weight: 400;
-            font-style: normal;
-        }
-
-        .bitcount {
-            font-family: "Bitcount Single Ink", system-ui;
-            font-weight: 400;
-            font-style: normal;
-        }
-
-        .social-btn {
-            font-family: 'Inter', sans-serif;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.75rem;
-            letter-spacing: 0.12em;
-            font-weight: 300;
-            color: #1a1a1a;
-            text-decoration: none;
-            transition: gap 0.2s ease, opacity 0.2s ease;
-        }
-
-        .social-btn:hover {
-            gap: 16px;
-            opacity: 0.6;
-        }
-
-        .social-btn .arrow {
-            font-size: 1rem;
-            line-height: 1;
-        }
-    </style>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 </head>
+<body class="bg-white text-gray-900" style="font-family:Inter,sans-serif;">
 
-<body class="text-gray-900 font-light">
+    <div class="max-w-2xl mx-auto px-8">
 
-    <!-- ===== SECTION 1 : LANDING ===== -->
-    <section class="min-h-screen bg-[#eeffcc] flex items-center justify-center px-6">
-
-        <div class="flex flex-col md:flex-row items-center gap-20">
-
-            <!-- Image -->
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpdO16yvb_PKvLwFPrxEoSfaC8HzNPrrc4AQ&s" class="object-cover" />
-
-            <!-- Text -->
-            <div class="bitcount text-center md:text-left">
-
-                <h1 id="glitch-title" class="text-6xl tracking-wide">
-                    Victor S.
-                </h1>
-
-                <p id="glitch-sub" class="mt-6 text-xl tracking-widest text-gray-700">
-                    Do you bleed ?
-                </p>
-
-                <!-- Social Buttons -->
-                <div class="mt-10 flex gap-4 justify-center md:justify-start">
-
-                    <!-- LinkedIn -->
-                    <a href="https://in.linkedin.com/in/victor-singha-48b479148" target="_blank" class="social-btn">
-                        LinkedIn <span class="arrow">→</span>
-                    </a>
-
-                    <!-- GitHub -->
-                    <a href="https://github.com/victorsingha" target="_blank" class="social-btn">
-                        GitHub <span class="arrow">→</span>
-                    </a>
-
-                </div>
-
+        <!-- NAV -->
+        <nav class="flex justify-between items-center py-8">
+            <span class="text-xs tracking-widest text-gray-400">VS</span>
+            <div class="flex gap-5 text-gray-400">
+                <a href="https://github.com/victorsingha" target="_blank"><i data-feather="github"></i></a>
+                <a href="https://in.linkedin.com/in/victor-singha-48b479148" target="_blank"><i data-feather="linkedin"></i></a>
             </div>
+        </nav>
 
-        </div>
+        <!-- HERO -->
+        <section class="py-28 text-center">
+            <h1 style="font-family:'Great Vibes',cursive;" class="text-8xl text-gray-900">Victor Singha</h1>
+            <p class="mt-6 text-xs tracking-widest text-gray-400 uppercase">Why not simple?</p>
+        </section>
 
-    </section>
-
-
-    <!-- ===== SECTION 2 : PROJECTS ===== -->
-    <section class="bg-white py-32 px-6">
-
-        <div class="max-w-7xl mx-auto">
-
-            <h2 class="text-4xl font-extralight mb-20 tracking-wide">
-                Utensils
-            </h2>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-24">
-
-                <iframe class="w-full h-[420px]" src="https://victorsingha.github.io/sql/"></iframe>
-                <iframe class="w-full h-[420px]" src="https://victorsingha.github.io/powershell/"></iframe>
-                <iframe class="w-full h-[420px]" src="https://victorsingha.github.io/maticon/"></iframe>
-                <iframe class="w-full h-[420px]" src="https://victorsingha.github.io/lottie/"></iframe>
-
+        <!-- PROJECTS -->
+        <section class="pb-28">
+            <p class="text-xs tracking-widest text-gray-400 uppercase mb-10 text-center">Utensils</p>
+            <div class="grid grid-cols-2 gap-4">
+                <a href="https://victorsingha.github.io/sql/" target="_blank" class="border border-gray-100 rounded-2xl p-6 hover:border-gray-300">
+                    <p class="font-light">SQL Tool</p>
+                    <p class="text-xs text-gray-400 mt-1">SQL development scripts</p>
+                </a>
+                <a href="https://victorsingha.github.io/powershell/" target="_blank" class="border border-gray-100 rounded-2xl p-6 hover:border-gray-300">
+                    <p class="font-light">PowerShell</p>
+                    <p class="text-xs text-gray-400 mt-1">Command scripts</p>
+                </a>
+                <a href="https://victorsingha.github.io/maticon/" target="_blank" class="border border-gray-100 rounded-2xl p-6 hover:border-gray-300">
+                    <p class="font-light">Maticon</p>
+                    <p class="text-xs text-gray-400 mt-1">Material icon</p>
+                </a>
+                <a href="https://victorsingha.github.io/lottie/" target="_blank" class="border border-gray-100 rounded-2xl p-6 hover:border-gray-300">
+                    <p class="font-light">Lottie</p>
+                    <p class="text-xs text-gray-400 mt-1">Animation viewer</p>
+                </a>
             </div>
+        </section>
 
-        </div>
+        <!-- FOOTER -->
+        <footer class="flex justify-between items-center py-8 border-t border-gray-100 text-xs text-gray-400">
+            <span>© 2026 Victor Singha</span>
+            <div class="flex gap-5">
+                <a href="https://github.com/victorsingha" target="_blank"><i data-feather="github"></i></a>
+                <a href="https://in.linkedin.com/in/victor-singha-48b479148" target="_blank"><i data-feather="linkedin"></i></a>
+            </div>
+        </footer>
 
-    </section>
+    </div>
 
-
-    <!-- ===== FOOTER ===== -->
-    <footer class="bg-white py-10 px-6 text-center text-xs tracking-widest text-gray-500">
-        © 2026 Victor Singha. All rights reserved.
-
-        <div class="mt-10 flex gap-10 justify-center  tracking-widest">
-
-            <!-- LinkedIn -->
-            <a href="https://in.linkedin.com/in/victor-singha-48b479148" target="_blank">
-
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7 0h-4.98v16h4.98v-8.05c0-4.45 5.98-4.81 5.98 0v8.05h4.98v-10.95c0-9.03-9.82-8.71-10.98-4.26v-1.79z" />
-                </svg>
-
-
-            </a>
-
-            <!-- GitHub -->
-            <a href="https://github.com/victorsingha" target="_blank">
-
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.438 9.8 8.205 11.385.6.112.82-.26.82-.577 0-.285-.01-1.04-.015-2.04-3.338.726-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.744.083-.729.083-.729 1.205.085 1.84 1.238 1.84 1.238 1.07 1.835 2.807 1.305 3.492.997.108-.776.418-1.305.762-1.605-2.665-.304-5.467-1.335-5.467-5.933 0-1.31.468-2.38 1.236-3.22-.124-.303-.536-1.523.117-3.176 0 0 1.008-.322 3.3 1.23a11.52 11.52 0 013.003-.403c1.018.005 2.045.138 3.003.403 2.29-1.552 3.296-1.23 3.296-1.23.655 1.653.243 2.873.12 3.176.77.84 1.236 1.91 1.236 3.22 0 4.61-2.807 5.625-5.479 5.922.43.37.823 1.096.823 2.21 0 1.595-.015 2.883-.015 3.274 0 .32.218.694.825.576C20.565 22.296 24 17.798 24 12.5 24 5.87 18.63.5 12 .5z" />
-                </svg>
-
-
-            </a>
-
-        </div>
-
-    </footer>
-
-
-
-
-
-    <script>
-        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-        function shuffleText(element, finalText, speed = 30) {
-            let iteration = 0;
-
-            const interval = setInterval(() => {
-                element.innerText = finalText
-                    .split("")
-                    .map((letter, index) => {
-                        if (index < iteration) {
-                            return finalText[index];
-                        }
-                        return letters[Math.floor(Math.random() * letters.length)];
-                    })
-                    .join("");
-
-                if (iteration >= finalText.length) {
-                    clearInterval(interval);
-                }
-
-                iteration += 1 / 2;
-            }, speed);
-        }
-
-        const title = document.getElementById("glitch-title");
-        const sub = document.getElementById("glitch-sub");
-
-        const titleText = title.innerText;
-        const subText = sub.innerText;
-
-        title.innerText = "";
-        sub.innerText = "";
-
-        setTimeout(() => shuffleText(title, titleText, 40), 300);
-        setTimeout(() => shuffleText(sub, subText, 30), 1200);
-    </script>
-
+    <script>feather.replace({ width: 16, height: 16 })</script>
 </body>
-
 </html>
