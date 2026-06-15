@@ -11,18 +11,15 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/feather-icons"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@800;900&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap"
         rel="stylesheet">
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@800;900&display=swap"
-        rel="stylesheet">
-
     <style>
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Bricolage Grotesque', 'Inter', sans-serif;
             overflow-x: hidden;
             overflow-y: auto;
             background: white;
@@ -34,20 +31,17 @@
             color: #ffffff;
         }
 
-        canvas {
+        #bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
             pointer-events: none;
-            display: block;
             z-index: -1;
-            background: white;
-            transition: background 0.4s;
         }
-        body.red-mode canvas {
-            background: #3a0000;
+        #bg canvas {
+            display: block;
         }
         body.red-mode .card {
             background: rgba(255,255,255,0.06) !important;
@@ -118,8 +112,8 @@
 
 <body class="bg-white text-gray-900">
 
-    <!-- Animated Background -->
-    <canvas id="artPlum"></canvas>
+    <!-- Three.js Terrain Background -->
+    <div id="bg"></div>
 
     <div class="max-w-2xl mx-auto px-4 sm:px-8 pt-20 sm:pt-32 pb-20 relative z-10 min-h-screen flex flex-col justify-between">
 
@@ -132,7 +126,7 @@
         <main class="flex-grow flex flex-col justify-center">
 
             <header class="mb-12 sm:mb-16">
-                <h1 style="font-family: 'Outfit', sans-serif;"
+                <h1 style="font-family: 'Bricolage Grotesque', 'Outfit', sans-serif;"
                     class="text-5xl sm:text-7xl font-black tracking-tight select-none">
                     keep your<br>
                     <span><span id="rotating-word" class="text-[#006039]">design</span> simple</span>
@@ -216,27 +210,6 @@
     <script>
         feather.replace({ width: 16, height: 16 });
 
-        function toggleRedMode() {
-            document.body.classList.toggle('red-mode');
-            const isRed = document.body.classList.contains('red-mode');
-            STROKE_COLOR = isRed ? "rgba(255, 255, 255, 0.15)" : "rgba(0, 0, 0, 0.08)";
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.strokeStyle = STROKE_COLOR;
-            ctx.lineWidth = LINE_WIDTH;
-            tasks = [];
-            next = [];
-            tasks = [
-                () => branch(Math.random() * window.innerWidth, -5, Math.PI / 2),
-                () => branch(Math.random() * window.innerWidth, window.innerHeight + 5, -Math.PI / 2),
-                () => branch(-5, Math.random() * window.innerHeight, 0),
-                () => branch(window.innerWidth + 5, Math.random() * window.innerHeight, Math.PI)
-            ];
-            if (window.innerWidth < 500) tasks = tasks.slice(0, 2);
-            const icon = document.getElementById('modeIcon');
-            icon.setAttribute('data-feather', isRed ? 'sun' : 'moon');
-            feather.replace();
-        }
-
         const words = ['design', 'typo', 'color', 'code', 'system'];
         let idx = 0;
         const el = document.getElementById('rotating-word');
@@ -273,130 +246,116 @@
 
         setTimeout(cycle, 2000);
 
-        const MAX_DEPTH = 25;
-        const BRANCH_SPREAD = Math.PI / 12;
-        let STROKE_COLOR = "rgba(0, 0, 0, 0.08)";
-        const LINE_WIDTH = 1;
+        // Three.js Terrain
+        let terrainMesh, scene, camera, renderer;
+        const origPositions = {};
 
-        const canvas = document.getElementById("artPlum");
-        const ctx = canvas.getContext("2d");
+        function initTerrain() {
+            scene = new THREE.Scene();
+            camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 100);
+            camera.position.set(0, 5, 9);
+            camera.lookAt(0, -0.5, 0);
 
-        function resizeOnce() {
-            const dpr = window.devicePixelRatio || 1;
+            renderer = new THREE.WebGLRenderer({ alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            document.getElementById('bg').appendChild(renderer.domElement);
 
-            canvas.width = window.innerWidth * dpr;
-            canvas.height = window.innerHeight * dpr;
+            const seg = 160;
+            const geo = new THREE.PlaneGeometry(36, 36, seg, seg);
+            geo.rotateX(-Math.PI / 2);
 
-            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            const pos = geo.attributes.position.array;
+            origPositions.array = new Float32Array(pos);
+
+            const cols = seg + 1;
+            const rows = seg + 1;
+            const lineVerts = [];
+            const idxMap = [];
+
+            for (let r = 0; r < rows; r++) {
+                for (let c = 0; c < cols - 1; c++) {
+                    const i1 = r * cols + c;
+                    const i2 = r * cols + c + 1;
+                    idxMap.push(i1, i2);
+                    lineVerts.push(pos[i1 * 3], pos[i1 * 3 + 1], pos[i1 * 3 + 2]);
+                    lineVerts.push(pos[i2 * 3], pos[i2 * 3 + 1], pos[i2 * 3 + 2]);
+                }
+            }
+
+            for (let c = 0; c < cols; c++) {
+                for (let r = 0; r < rows - 1; r++) {
+                    const i1 = r * cols + c;
+                    const i2 = (r + 1) * cols + c;
+                    idxMap.push(i1, i2);
+                    lineVerts.push(pos[i1 * 3], pos[i1 * 3 + 1], pos[i1 * 3 + 2]);
+                    lineVerts.push(pos[i2 * 3], pos[i2 * 3 + 1], pos[i2 * 3 + 2]);
+                }
+            }
+
+            const lineGeo = new THREE.BufferGeometry();
+            lineGeo.setAttribute('position', new THREE.Float32BufferAttribute(lineVerts, 3));
+
+            const material = new THREE.LineBasicMaterial({
+                color: 0x006039,
+                transparent: true,
+                opacity: 0.12
+            });
+
+            terrainMesh = new THREE.LineSegments(lineGeo, material);
+            terrainMesh.userData = { geo, idxMap, cols, rows };
+            scene.add(terrainMesh);
+
+            window.addEventListener('resize', () => {
+                const w = window.innerWidth;
+                const h = window.innerHeight;
+                camera.aspect = w / h;
+                camera.updateProjectionMatrix();
+                renderer.setSize(w, h);
+            });
         }
 
-        resizeOnce();
+        function updateTerrain(time) {
+            const { geo, idxMap } = terrainMesh.userData;
+            const origPos = geo.attributes.position.array;
+            const linePos = terrainMesh.geometry.attributes.position.array;
+            const orig = origPositions.array;
 
-        function nextPoint(x, y, len, angle) {
-            return [
-                x + len * Math.cos(angle),
-                y + len * Math.sin(angle)
-            ];
+            for (let i = 0; i < origPos.length; i += 3) {
+                const x = orig[i];
+                const z = orig[i + 2];
+                origPos[i + 1] = Math.sin(x * 0.8 + time * 0.4) * 0.4
+                               + Math.sin(z * 0.6 + time * 0.3) * 0.3
+                               + Math.sin((x + z) * 0.5 + time * 0.6) * 0.2;
+            }
+            geo.attributes.position.needsUpdate = true;
+
+            for (let i = 0; i < linePos.length; i += 3) {
+                const origIdx = idxMap[i / 3];
+                linePos[i] = origPos[origIdx * 3];
+                linePos[i + 1] = origPos[origIdx * 3 + 1];
+                linePos[i + 2] = origPos[origIdx * 3 + 2];
+            }
+            terrainMesh.geometry.attributes.position.needsUpdate = true;
         }
 
-        let next = [];
-        let tasks = [];
-
-        function branch(x, y, angle, state = { depth: 0 }) {
-
-            const len = Math.random() * 8 + 2;
-
-            state.depth++;
-
-            const [nx, ny] = nextPoint(x, y, len, angle);
-
-            ctx.beginPath();
-            ctx.moveTo(x, y);
-            ctx.lineTo(nx, ny);
-            ctx.stroke();
-
-            if (
-                nx < -100 ||
-                nx > window.innerWidth + 100 ||
-                ny < -100 ||
-                ny > window.innerHeight + 100
-            ) return;
-
-            const continueChance =
-                state.depth <= MAX_DEPTH ? 0.8 : 0.5;
-
-            const a1 = angle + Math.random() * BRANCH_SPREAD;
-            const a2 = angle - Math.random() * BRANCH_SPREAD;
-
-            if (Math.random() < continueChance)
-                next.push(() => branch(nx, ny, a1, state));
-
-            if (Math.random() < continueChance)
-                next.push(() => branch(nx, ny, a2, state));
+        function terrainLoop() {
+            requestAnimationFrame(terrainLoop);
+            updateTerrain(Date.now() * 0.001);
+            renderer.render(scene, camera);
         }
 
-        function init() {
+        initTerrain();
+        terrainLoop();
 
-            ctx.strokeStyle = STROKE_COLOR;
-            ctx.lineWidth = LINE_WIDTH;
-
-            tasks = [
-                () => branch(Math.random() * window.innerWidth, -5, Math.PI / 2),
-
-                () => branch(
-                    Math.random() * window.innerWidth,
-                    window.innerHeight + 5,
-                    -Math.PI / 2
-                ),
-
-                () => branch(
-                    -5,
-                    Math.random() * window.innerHeight,
-                    0
-                ),
-
-                () => branch(
-                    window.innerWidth + 5,
-                    Math.random() * window.innerHeight,
-                    Math.PI
-                )
-            ];
-
-            if (window.innerWidth < 500)
-                tasks = tasks.slice(0, 2);
-
-            animate();
+        function toggleRedMode() {
+            document.body.classList.toggle('red-mode');
+            const isRed = document.body.classList.contains('red-mode');
+            terrainMesh.material.color.set(isRed ? 0xcc4444 : 0x006039);
+            const icon = document.getElementById('modeIcon');
+            icon.setAttribute('data-feather', isRed ? 'sun' : 'moon');
+            feather.replace();
         }
-
-        let last = performance.now();
-
-        const frameInterval = 1000 / 40;
-
-        function animate() {
-
-            requestAnimationFrame(animate);
-
-            const now = performance.now();
-
-            if (now - last < frameInterval) return;
-
-            last = now;
-
-            const current = tasks;
-
-            tasks = [];
-
-            if (!current.length && !next.length) return;
-
-            current.forEach(f =>
-                (Math.random() < 0.5 ? next.push(f) : f())
-            );
-
-            tasks = next;
-            next = [];
-        }
-
-        init();
     </script>
 
 </body>
