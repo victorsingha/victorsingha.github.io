@@ -43,35 +43,17 @@
         #bg canvas {
             display: block;
         }
-        body.red-mode .card {
-            background: rgba(255,255,255,0.06) !important;
-            border-color: rgba(255,255,255,0.1) !important;
+        body.red-mode .link-item span {
+            color: #ffffff !important;
         }
-        body.red-mode .card:hover {
-            background: rgba(255,255,255,0.1) !important;
-            border-color: rgba(255,255,255,0.2) !important;
+        body.red-mode .link-item:hover span {
+            color: #e57373 !important;
         }
-        body.red-mode .card-icon {
+        body.red-mode .link-item p {
             color: rgba(255,255,255,0.5) !important;
         }
-        body.red-mode .card-icon:hover {
-            color: #ffffff !important;
-        }
-        body.red-mode .card-arrow {
-            color: rgba(255,255,255,0.4) !important;
-        }
-        body.red-mode .card-arrow:hover {
-            color: #ffffff !important;
-        }
-        body.red-mode .social-btn {
-            background: rgba(255,255,255,0.06) !important;
-            border-color: rgba(255,255,255,0.1) !important;
+        body.red-mode .social-link {
             color: rgba(255,255,255,0.5) !important;
-        }
-        body.red-mode .social-btn:hover {
-            background: rgba(255,255,255,0.1) !important;
-            border-color: rgba(255,255,255,0.2) !important;
-            color: #ffffff !important;
         }
         body.red-mode .divider {
             background: linear-gradient(to right, rgba(255,255,255,0.15), rgba(255,255,255,0.05), transparent) !important;
@@ -81,12 +63,6 @@
         }
         body.red-mode .text-muted {
             color: rgba(255,255,255,0.4) !important;
-        }
-        body.red-mode .card-title {
-            color: #ffffff !important;
-        }
-        body.red-mode .card-sub {
-            color: rgba(255,255,255,0.5) !important;
         }
         body.red-mode .toggle-btn {
             background: rgba(255,255,255,0.1) !important;
@@ -131,77 +107,42 @@
                     keep your<br>
                     <span><span id="rotating-word" class="text-[#006039]">design</span> simple</span>
                 </h1>
-            </header>
+              </header>
 
-            <section class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 max-w-md w-full">
+            <nav class="max-w-md w-full space-y-6">
                 <a href="https://victorsingha.github.io/sql/" target="_blank"
-                    class="card group flex flex-col justify-between border border-gray-100 bg-white/70 backdrop-blur-sm rounded-2xl p-5 sm:p-6 min-h-[140px] sm:min-h-0 sm:aspect-square hover:border-gray-900/10 hover:bg-gray-50/80 transition-all duration-300 shadow-sm hover:shadow-md">
-                    <div class="flex flex-col gap-3 sm:gap-4">
-                        <div class="card-icon text-gray-400 group-hover:text-[#006039] transition-colors duration-300">
-                            <i class="bi bi-database text-2xl"></i>
-                        </div>
-                        <div>
-                            <p class="card-title font-normal text-gray-900 text-lg">SQL Tool</p>
-                            <p class="card-sub text-xs text-gray-400 mt-1">
-                                SQL development scripts
-                            </p>
-                        </div>
-                    </div>
-                    <div
-                        class="card-arrow text-gray-400 group-hover:text-gray-900 group-hover:translate-x-1 transition-all duration-300 self-end">
-                        <i data-feather="arrow-right"></i>
-                    </div>
+                    class="link-item block group">
+                    <span class="text-xl tracking-tight font-semibold text-gray-900 group-hover:text-[#006039] transition-colors duration-200">
+                        SQL Tool <i data-feather="arrow-up-right" class="inline w-4 h-4"></i>
+                    </span>
+                    <p class="text-sm text-gray-400 mt-0.5 leading-relaxed">SQL development scripts</p>
                 </a>
-
                 <a href="https://victorsingha.github.io/lottie/" target="_blank"
-                    class="card group flex flex-col justify-between border border-gray-100 bg-white/70 backdrop-blur-sm rounded-2xl p-5 sm:p-6 min-h-[140px] sm:min-h-0 sm:aspect-square hover:border-gray-900/10 hover:bg-gray-50/80 transition-all duration-300 shadow-sm hover:shadow-md">
-                    <div class="flex flex-col gap-3 sm:gap-4">
-                        <div class="card-icon text-gray-400 group-hover:text-[#006039] transition-colors duration-300">
-                            <i class="bi bi-play-circle text-2xl"></i>
-                        </div>
-                        <div>
-                            <p class="card-title font-normal text-gray-900 text-lg">Lottie</p>
-                            <p class="card-sub text-xs text-gray-400 mt-1">
-                                Animation viewer
-                            </p>
-                        </div>
-                    </div>
-                    <div
-                        class="card-arrow text-gray-400 group-hover:text-gray-900 group-hover:translate-x-1 transition-all duration-300 self-end">
-                        <i data-feather="arrow-right"></i>
-                    </div>
+                    class="link-item block group">
+                    <span class="text-xl tracking-tight font-semibold text-gray-900 group-hover:text-[#006039] transition-colors duration-200">
+                        Lottie <i data-feather="arrow-up-right" class="inline w-4 h-4"></i>
+                    </span>
+                    <p class="text-sm text-gray-400 mt-0.5 leading-relaxed">Animation viewer</p>
                 </a>
-            </section>
+            </nav>
         </main>
 
         <!-- Footer -->
         <footer class="mt-20 sm:mt-32">
-            <div class="divider h-[1px] w-full bg-gradient-to-r from-gray-200/60 via-gray-100/30 to-transparent mb-6 sm:mb-8"></div>
 
-            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-6 pb-12">
-                <div class="flex items-center gap-3">
-                    <div class="text-xs text-muted font-sans tracking-wide">
-                        <span class="font-normal">Victor Singha</span>
-                        <span class="copyright-sep mx-2">/</span>
-                        <span>© 2026</span>
-                    </div>
-                </div>
-
-                <div class="flex gap-2 sm:gap-3">
-                    <a href="https://github.com/victorsingha" target="_blank"
-                        class="social-btn group flex items-center gap-2 px-3 py-2 sm:py-1.5 rounded-full border border-gray-100 bg-white/40 backdrop-blur-sm text-gray-400 hover:text-gray-900 hover:border-gray-900/10 hover:bg-gray-50/80 transition-all duration-300 shadow-sm hover:shadow-md">
-                        <i data-feather="github"></i>
-                        <span
-                            class="text-[10px] font-normal tracking-wider uppercase opacity-0 group-hover:opacity-100 max-w-0 group-hover:max-w-xs overflow-hidden transition-all duration-500 ease-in-out">GitHub</span>
+            <div class="pb-12 text-center">
+                <p class="text-xs text-muted tracking-wide text-gray-500 mb-2">Victor Singha © 2026</p>
+                <div  class="text-xs text-muted font-sans tracking-wide mb-3 flex flex-row justify-center gap-4">
+                    <a href="https://github.com/victorsingha" target="_blank" title="GitHub"
+                        class="social-link inline-flex items-center gap-1.5 text-gray-500">
+                        <i data-feather="github" class="w-4 h-4"></i>
                     </a>
-
-                    <a href="https://in.linkedin.com/in/victor-singha-48b479148" target="_blank"
-                        class="social-btn group flex items-center gap-2 px-3 py-2 sm:py-1.5 rounded-full border border-gray-100 bg-white/40 backdrop-blur-sm text-gray-400 hover:text-gray-900 hover:border-gray-900/10 hover:bg-gray-50/80 transition-all duration-300 shadow-sm hover:shadow-md">
-                        <i data-feather="linkedin"></i>
-                        <span
-                            class="text-[10px] font-normal tracking-wider uppercase opacity-0 group-hover:opacity-100 max-w-0 group-hover:max-w-xs overflow-hidden transition-all duration-500 ease-in-out">LinkedIn</span>
+                    <a href="https://in.linkedin.com/in/victor-singha-48b479148" target="_blank" title="LinkedIn"
+                        class="social-link inline-flex items-center gap-1.5 text-gray-500">
+                        <i data-feather="linkedin" class="w-4 h-4"></i>
                     </a>
                 </div>
+
             </div>
         </footer>
 
