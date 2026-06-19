@@ -54,6 +54,7 @@
 
     <script type="module">
         import * as THREE from 'three';
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
         import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
         import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
         import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
@@ -68,6 +69,7 @@
         scene.fog = new THREE.FogExp2(0x020104, 0.025);
         const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 4000);
         camera.position.set(-6.5, 5.0, 6.5);
+        camera.lookAt(0, 0, 0);
 
         const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "high-performance" });
         renderer.setSize(window.innerWidth, window.innerHeight);
@@ -121,6 +123,18 @@
                 }`
         };
         composer.addPass(new ShaderPass(lensingShader));
+
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.035;
+        controls.autoRotate = true;
+        controls.autoRotateSpeed = 0.5;
+        controls.target.set(0, 0, 0);
+        controls.minDistance = 2.5;
+        controls.maxDistance = 100;
+        controls.enablePan = false;
+        controls.enableZoom = false;
+        controls.update();
 
         const starGeometry = new THREE.BufferGeometry();
         const starCount = 150000;
@@ -343,6 +357,7 @@
                 (blackHoleScreenPosVec3.x + 1) / 2,
                 (blackHoleScreenPosVec3.y + 1) / 2
             );
+            controls.update();
             stars.rotation.y += deltaTime * 0.003;
             stars.rotation.x += deltaTime * 0.001;
             accretionDisk.rotation.z += deltaTime * 0.005;
