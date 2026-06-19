@@ -1,278 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="google-site-verification" content="Pb0sazMsgnJtyEbYYCu2UqI9A-g2SPqjlOZy0_M1P4Q" />
-
-    <title>Victor Singha</title>
-
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/feather-icons"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-            overflow-y: auto;
-            background: white;
-            color: #111827;
-            transition: background 0.4s, color 0.4s;
+            overflow: hidden;
+            background: #ffffff;
         }
-        body.red-mode {
-            background: #3a0000;
-            color: #ffffff;
-        }
-
         #bg {
             position: fixed;
-            top: 0;
-            left: 0;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            z-index: 0;
+        }
+        #top-bar {
+            position: fixed;
+            top: 0; left: 0;
             width: 100vw;
-            height: 100vh;
-            pointer-events: none;
-            z-index: -1;
+            height: 3px;
+            z-index: 10;
+            background: #e5e7eb;
         }
-        #bg canvas {
-            display: block;
+        #top-bar-fill {
+            height: 100%;
+            width: 0%;
+            background: #dc2626;
+            animation: fillBar 2.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s forwards;
         }
-        .glass-table {
-            width: 100%;
-            max-width: 320px;
-            border-radius: 12px;
-            border: 1px solid rgba(0,0,0,0.06);
-            background: rgba(255,255,255,0.2);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.04);
-            overflow: hidden;
+        @keyframes fillBar {
+            to { width: 100%; }
         }
-        body.red-mode .glass-table {
-            border-color: rgba(255,255,255,0.1);
-            background: rgba(255,255,255,0.05);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+
+        .fade-out #bg {
+            animation: bgFade 0.7s ease forwards;
         }
-        table {
-            border-collapse: collapse;
-            width: 100%;
+        @keyframes bgFade {
+            to { opacity: 0; }
         }
-        table td {
-            padding: 10px 16px;
-            font-size: 0.825rem;
-            font-weight: 500;
-            color: #111827;
-            border-bottom: 1px solid rgba(0,0,0,0.06);
-            transition: all 0.2s;
-            text-align: left;
-        }
-        table tr:last-child td {
-            border-bottom: none;
-        }
-        .desc {
-            margin-left: 8px;
-            font-size: 0.75rem;
-            font-weight: 400;
-            color: #9ca3af;
-        }
-        tr:hover td {
-            background: rgba(0,0,0,0.02);
-            color: #006039;
-        }
-        body.red-mode tr:hover td {
-            background: rgba(255,255,255,0.04);
-            color: #e57373 !important;
-        }
-        body.red-mode table td {
-            color: #ffffff !important;
-            border-bottom-color: rgba(255,255,255,0.08);
-        }
-        body.red-mode .desc {
-            color: rgba(255,255,255,0.5) !important;
-        }
-        body.red-mode .social-link {
-            color: rgba(255,255,255,0.5) !important;
-        }
-        body.red-mode .toggle-btn {
-            background: rgba(255,255,255,0.1) !important;
-            border-color: rgba(255,255,255,0.2) !important;
-            color: rgba(255,255,255,0.7) !important;
-        }
-        body.red-mode .toggle-btn:hover {
-            background: rgba(255,255,255,0.18) !important;
-            color: #ffffff !important;
-        }
-                
     </style>
 </head>
-
-<body class="bg-white text-gray-900">
-
-    <!-- Three.js Terrain Background -->
+<body>
+    <div id="top-bar"><div id="top-bar-fill"></div></div>
     <div id="bg"></div>
 
-    <div class="max-w-2xl mx-auto px-4 sm:px-8 relative z-10 h-screen flex flex-col overflow-hidden">
-
-        <button id="modeToggle" onclick="toggleRedMode()"
-            class="toggle-btn fixed top-4 right-4 sm:top-6 sm:right-6 z-20 p-2.5 rounded-full bg-white/40 backdrop-blur-sm text-gray-500 hover:text-gray-900 transition-all duration-300 shadow-sm hover:shadow-md">
-            <i id="modeIcon" data-feather="moon" class="w-5 h-5"></i>
-        </button>
-
-        <!-- Main Content -->
-        <main class="flex-1 flex flex-col justify-center items-center text-center min-h-0">
-
-
-            <div class="glass-table">
-                <table>
-                    <tr onclick="window.open('https://victorsingha.vercel.app/chat', '_blank')" style="cursor:pointer"><td>Chat ✨<span class="desc">Victor AI Portfolio Assistant</span></td></tr>
-                    <tr onclick="window.open('https://victorsingha.github.io/sql/', '_blank')" style="cursor:pointer"><td>SQL Server Tool<span class="desc">SQL development scripts</span></td></tr>
-                    <tr onclick="window.open('https://victorsingha.github.io/lottie/', '_blank')" style="cursor:pointer"><td>Lottie Json<span class="desc">Animation viewer</span></td></tr>
-                    <tr onclick="window.open('https://imbroke1.vercel.app/', '_blank')" style="cursor:pointer"><td>I m Broke<span class="desc">Expense tracker app</span></td></tr>
-                    <tr onclick="window.open('https://intelligence-markets.vercel.app/', '_blank')" style="cursor:pointer"><td>Intel Markets<span class="desc">Prediction markets</span></td></tr>
-                </table>
-            </div>
-        </main>
-
-        <!-- Footer -->
-        <footer class="pb-8 sm:pb-10">
-
-            <div class="pb-12 text-center">
-                <p class="text-xs text-muted tracking-wide text-gray-500 mb-2">Victor Singha © 2026</p>
-                <div  class="text-xs text-muted font-sans tracking-wide mb-3 flex flex-row justify-center gap-4">
-                    <a href="https://github.com/victorsingha" target="_blank" title="GitHub"
-                        class="social-link inline-flex items-center gap-1.5 text-gray-500">
-                        <i data-feather="github" class="w-4 h-4"></i>
-                    </a>
-                    <a href="https://in.linkedin.com/in/victor-singha-48b479148" target="_blank" title="LinkedIn"
-                        class="social-link inline-flex items-center gap-1.5 text-gray-500">
-                        <i data-feather="linkedin" class="w-4 h-4"></i>
-                    </a>
-                </div>
-
-            </div>
-        </footer>
-
-    </div>
-
     <script>
-        feather.replace({ width: 16, height: 16 });
+        const scene = new THREE.Scene();
 
-        // Three.js Terrain
-        let terrainMesh, scene, camera, renderer;
-        const origPositions = {};
+        const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 100);
+        camera.position.set(0, 0, 8);
+        camera.lookAt(0, 0, 0);
 
-        function initTerrain() {
-            scene = new THREE.Scene();
-            camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 100);
-            camera.position.set(0, 5, 9);
-            camera.lookAt(0, -0.5, 0);
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1.2;
+        document.getElementById('bg').appendChild(renderer.domElement);
 
-            renderer = new THREE.WebGLRenderer({ alpha: true });
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-            document.getElementById('bg').appendChild(renderer.domElement);
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+        scene.add(ambientLight);
 
-            const seg = 160;
-            const geo = new THREE.PlaneGeometry(36, 36, seg, seg);
-            geo.rotateX(-Math.PI / 2);
+        const keyLight = new THREE.DirectionalLight(0xffffff, 1.2);
+        keyLight.position.set(5, 8, 6);
+        keyLight.castShadow = false;
+        scene.add(keyLight);
 
-            const pos = geo.attributes.position.array;
-            origPositions.array = new Float32Array(pos);
+        const fillLight = new THREE.DirectionalLight(0xffffff, 0.3);
+        fillLight.position.set(-3, 2, -4);
+        scene.add(fillLight);
 
-            const cols = seg + 1;
-            const rows = seg + 1;
-            const lineVerts = [];
-            const idxMap = [];
+        const rimLight = new THREE.DirectionalLight(0xffffff, 0.5);
+        rimLight.position.set(0, -4, 5);
+        scene.add(rimLight);
 
-            for (let r = 0; r < rows; r++) {
-                for (let c = 0; c < cols - 1; c++) {
-                    const i1 = r * cols + c;
-                    const i2 = r * cols + c + 1;
-                    idxMap.push(i1, i2);
-                    lineVerts.push(pos[i1 * 3], pos[i1 * 3 + 1], pos[i1 * 3 + 2]);
-                    lineVerts.push(pos[i2 * 3], pos[i2 * 3 + 1], pos[i2 * 3 + 2]);
-                }
-            }
+        const group = new THREE.Group();
+        scene.add(group);
 
-            for (let c = 0; c < cols; c++) {
-                for (let r = 0; r < rows - 1; r++) {
-                    const i1 = r * cols + c;
-                    const i2 = (r + 1) * cols + c;
-                    idxMap.push(i1, i2);
-                    lineVerts.push(pos[i1 * 3], pos[i1 * 3 + 1], pos[i1 * 3 + 2]);
-                    lineVerts.push(pos[i2 * 3], pos[i2 * 3 + 1], pos[i2 * 3 + 2]);
-                }
-            }
+        const torusKnot = new THREE.Mesh(
+            new THREE.TorusKnotGeometry(1.4, 0.45, 128, 24),
+            new THREE.MeshStandardMaterial({ color: 0x4338ca, metalness: 0.35, roughness: 0.3 })
+        );
+        torusKnot.castShadow = true;
+        group.add(torusKnot);
 
-            const lineGeo = new THREE.BufferGeometry();
-            lineGeo.setAttribute('position', new THREE.Float32BufferAttribute(lineVerts, 3));
+        const innerRing = new THREE.Mesh(
+            new THREE.TorusGeometry(1.8, 0.06, 32, 64),
+            new THREE.MeshStandardMaterial({ color: 0x7c3aed, metalness: 0.2, roughness: 0.5 })
+        );
+        innerRing.rotation.x = Math.PI / 3;
+        group.add(innerRing);
 
-            const material = new THREE.LineBasicMaterial({
-                color: 0x006039,
-                transparent: true,
-                opacity: 0.12
+        const outerRing = new THREE.Mesh(
+            new THREE.TorusGeometry(2.3, 0.04, 24, 64),
+            new THREE.MeshStandardMaterial({ color: 0xa21caf, metalness: 0.1, roughness: 0.6 })
+        );
+        outerRing.rotation.x = -Math.PI / 4;
+        outerRing.rotation.z = Math.PI / 6;
+        group.add(outerRing);
+
+        const satCount = 6;
+        const sats = [];
+        for (let i = 0; i < satCount; i++) {
+            const size = 0.12 + Math.random() * 0.08;
+            const geo = new THREE.IcosahedronGeometry(size);
+            const colors = [0x4338ca, 0x7c3aed, 0xa21caf, 0xbe185d, 0x1d4ed8, 0x6d28d9];
+            const mat = new THREE.MeshStandardMaterial({
+                color: colors[i],
+                metalness: 0.3,
+                roughness: 0.4
             });
-
-            terrainMesh = new THREE.LineSegments(lineGeo, material);
-            terrainMesh.userData = { geo, idxMap, cols, rows };
-            scene.add(terrainMesh);
-
-            window.addEventListener('resize', () => {
-                const w = window.innerWidth;
-                const h = window.innerHeight;
-                camera.aspect = w / h;
-                camera.updateProjectionMatrix();
-                renderer.setSize(w, h);
-            });
+            const mesh = new THREE.Mesh(geo, mat);
+            const angle = (i / satCount) * Math.PI * 2;
+            const radius = 2.8;
+            mesh.position.set(Math.cos(angle) * radius, (Math.random() - 0.5) * 0.8, Math.sin(angle) * radius);
+            mesh.userData = { angle, radius, speed: 0.25 + Math.random() * 0.15, phase: Math.random() * Math.PI * 2 };
+            group.add(mesh);
+            sats.push(mesh);
         }
 
-        function updateTerrain(time) {
-            const { geo, idxMap } = terrainMesh.userData;
-            const origPos = geo.attributes.position.array;
-            const linePos = terrainMesh.geometry.attributes.position.array;
-            const orig = origPositions.array;
+        const pCount = 800;
+        const pPos = new Float32Array(pCount * 3);
+        const pSizes = new Float32Array(pCount);
+        const pData = [];
+        const pColors = new Float32Array(pCount * 3);
+        const pal = [0x4338ca, 0x7c3aed, 0xa21caf, 0xbe185d];
 
-            for (let i = 0; i < origPos.length; i += 3) {
-                const x = orig[i];
-                const z = orig[i + 2];
-                origPos[i + 1] = Math.sin(x * 0.8 + time * 0.4) * 0.4
-                               + Math.sin(z * 0.6 + time * 0.3) * 0.3
-                               + Math.sin((x + z) * 0.5 + time * 0.6) * 0.2;
-            }
-            geo.attributes.position.needsUpdate = true;
-
-            for (let i = 0; i < linePos.length; i += 3) {
-                const origIdx = idxMap[i / 3];
-                linePos[i] = origPos[origIdx * 3];
-                linePos[i + 1] = origPos[origIdx * 3 + 1];
-                linePos[i + 2] = origPos[origIdx * 3 + 2];
-            }
-            terrainMesh.geometry.attributes.position.needsUpdate = true;
+        for (let i = 0; i < pCount; i++) {
+            const theta = Math.random() * Math.PI * 2;
+            const phi = Math.acos(2 * Math.random() - 1);
+            const r = 1.6 + Math.random() * 4;
+            pPos[i * 3] = r * Math.sin(phi) * Math.cos(theta);
+            pPos[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta) * 0.5;
+            pPos[i * 3 + 2] = r * Math.cos(phi);
+            pSizes[i] = 0.008 + Math.random() * 0.025;
+            pData.push({ theta, phi, r, speed: 0.05 + Math.random() * 0.08, phase: Math.random() * Math.PI * 2 });
+            const c = new THREE.Color(pal[Math.floor(Math.random() * pal.length)]);
+            pColors[i * 3] = c.r;
+            pColors[i * 3 + 1] = c.g;
+            pColors[i * 3 + 2] = c.b;
         }
 
-        function terrainLoop() {
-            requestAnimationFrame(terrainLoop);
-            updateTerrain(Date.now() * 0.001);
+        const pGeo = new THREE.BufferGeometry();
+        pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+        pGeo.setAttribute('color', new THREE.BufferAttribute(pColors, 3));
+        pGeo.setAttribute('size', new THREE.BufferAttribute(pSizes, 1));
+
+        const pMat = new THREE.PointsMaterial({
+            size: 0.03,
+            vertexColors: true,
+            transparent: true,
+            opacity: 0.5,
+            blending: THREE.NormalBlending,
+            depthWrite: false,
+            sizeAttenuation: true
+        });
+        const particles = new THREE.Points(pGeo, pMat);
+        group.add(particles);
+
+        let start = Date.now();
+        const initPpos = new Float32Array(pPos);
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            const elapsed = (Date.now() - start) * 0.001;
+
+            group.rotation.y = elapsed * 0.15;
+            group.rotation.x = Math.sin(elapsed * 0.08) * 0.06;
+            group.rotation.z = Math.sin(elapsed * 0.05) * 0.03;
+
+            torusKnot.rotation.x = elapsed * 0.1;
+            torusKnot.rotation.y = elapsed * 0.2;
+
+            innerRing.rotation.z = elapsed * 0.08;
+            outerRing.rotation.z = elapsed * 0.12;
+
+            for (const s of sats) {
+                const a = s.userData.angle + elapsed * s.userData.speed;
+                s.position.x = Math.cos(a) * s.userData.radius;
+                s.position.z = Math.sin(a) * s.userData.radius;
+                s.position.y = Math.sin(elapsed * 0.6 + s.userData.phase) * 0.3;
+                s.rotation.x = elapsed * 0.5;
+                s.rotation.y = elapsed * 0.7;
+            }
+
+            const ppos = particles.geometry.attributes.position.array;
+            for (let i = 0; i < pCount; i++) {
+                const d = pData[i];
+                const a = d.theta + elapsed * d.speed;
+                const p = d.phi + Math.sin(elapsed * 0.3 + d.phase) * 0.02;
+                const r = d.r + Math.sin(elapsed * 0.2 + d.phase) * 0.1;
+                ppos[i * 3] = r * Math.sin(p) * Math.cos(a);
+                ppos[i * 3 + 1] = r * Math.sin(p) * Math.sin(a) * 0.5;
+                ppos[i * 3 + 2] = r * Math.cos(p);
+            }
+            particles.geometry.attributes.position.needsUpdate = true;
+
             renderer.render(scene, camera);
         }
 
-        initTerrain();
-        terrainLoop();
+        animate();
 
-        function toggleRedMode() {
-            document.body.classList.toggle('red-mode');
-            const isRed = document.body.classList.contains('red-mode');
-            terrainMesh.material.color.set(isRed ? 0xcc4444 : 0x006039);
-            const icon = document.getElementById('modeIcon');
-            icon.setAttribute('data-feather', isRed ? 'sun' : 'moon');
-            feather.replace();
-        }
+        window.addEventListener('resize', () => {
+            const w = window.innerWidth;
+            const h = window.innerHeight;
+            camera.aspect = w / h;
+            camera.updateProjectionMatrix();
+            renderer.setSize(w, h);
+        });
+
+        setTimeout(() => {
+            document.body.classList.add('fade-out');
+            setTimeout(() => {
+                window.location.href = 'https://victorsingha.vercel.app/chat';
+            }, 800);
+        }, 3600);
     </script>
-
 </body>
-
 </html>
