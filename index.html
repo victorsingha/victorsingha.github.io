@@ -13,13 +13,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@800;900&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <style>
         body {
-            font-family: 'Bricolage Grotesque', 'Inter', sans-serif;
+            font-family: 'Inter', sans-serif;
             overflow-x: hidden;
             overflow-y: auto;
             background: white;
@@ -43,26 +41,61 @@
         #bg canvas {
             display: block;
         }
-        body.red-mode .link-item span {
-            color: #ffffff !important;
+        .glass-table {
+            width: 100%;
+            max-width: 320px;
+            border-radius: 12px;
+            border: 1px solid rgba(0,0,0,0.06);
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.04);
+            overflow: hidden;
         }
-        body.red-mode .link-item:hover span {
+        body.red-mode .glass-table {
+            border-color: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.05);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        table td {
+            padding: 10px 16px;
+            font-size: 0.825rem;
+            font-weight: 500;
+            color: #111827;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            transition: all 0.2s;
+            text-align: left;
+        }
+        table tr:last-child td {
+            border-bottom: none;
+        }
+        .desc {
+            margin-left: 8px;
+            font-size: 0.75rem;
+            font-weight: 400;
+            color: #9ca3af;
+        }
+        tr:hover td {
+            background: rgba(0,0,0,0.02);
+            color: #006039;
+        }
+        body.red-mode tr:hover td {
+            background: rgba(255,255,255,0.04);
             color: #e57373 !important;
         }
-        body.red-mode .link-item p {
+        body.red-mode table td {
+            color: #ffffff !important;
+            border-bottom-color: rgba(255,255,255,0.08);
+        }
+        body.red-mode .desc {
             color: rgba(255,255,255,0.5) !important;
         }
         body.red-mode .social-link {
             color: rgba(255,255,255,0.5) !important;
-        }
-        body.red-mode .divider {
-            background: linear-gradient(to right, rgba(255,255,255,0.15), rgba(255,255,255,0.05), transparent) !important;
-        }
-        body.red-mode .copyright-sep {
-            color: rgba(255,255,255,0.2) !important;
-        }
-        body.red-mode .text-muted {
-            color: rgba(255,255,255,0.4) !important;
         }
         body.red-mode .toggle-btn {
             background: rgba(255,255,255,0.1) !important;
@@ -73,16 +106,7 @@
             background: rgba(255,255,255,0.18) !important;
             color: #ffffff !important;
         }
-        body.red-mode #rotating-word {
-            color: #ffffff !important;
-        }
-        #rotating-word::after {
-            content: '|';
-            animation: blink 0.7s steps(1) infinite;
-        }
-        @keyframes blink {
-            50% { opacity: 0; }
-        }
+                
     </style>
 </head>
 
@@ -91,44 +115,30 @@
     <!-- Three.js Terrain Background -->
     <div id="bg"></div>
 
-    <div class="max-w-2xl mx-auto px-4 sm:px-8 pt-20 sm:pt-32 pb-20 relative z-10 min-h-screen flex flex-col justify-between">
+    <div class="max-w-2xl mx-auto px-4 sm:px-8 relative z-10 h-screen flex flex-col overflow-hidden">
 
         <button id="modeToggle" onclick="toggleRedMode()"
             class="toggle-btn fixed top-4 right-4 sm:top-6 sm:right-6 z-20 p-2.5 rounded-full bg-white/40 backdrop-blur-sm text-gray-500 hover:text-gray-900 transition-all duration-300 shadow-sm hover:shadow-md">
             <i id="modeIcon" data-feather="moon" class="w-5 h-5"></i>
         </button>
 
-        <!-- Main Content (Left Aligned) -->
-        <main class="flex-grow flex flex-col justify-center">
+        <!-- Main Content -->
+        <main class="flex-1 flex flex-col justify-center items-center text-center min-h-0">
 
-            <header class="mb-12 sm:mb-16">
-                <h1 style="font-family: 'Bricolage Grotesque', 'Outfit', sans-serif;"
-                    class="text-5xl sm:text-7xl font-black tracking-tight select-none">
-                    keep your<br>
-                    <span><span id="rotating-word" class="text-[#006039]">design</span> simple</span>
-                </h1>
-              </header>
 
-            <nav class="max-w-md w-full space-y-6">
-                <a href="https://victorsingha.github.io/sql/" target="_blank"
-                    class="link-item block group">
-                    <span class="text-xl tracking-tight font-semibold text-gray-900 group-hover:text-[#006039] transition-colors duration-200">
-                        SQL Tool <i data-feather="arrow-up-right" class="inline w-4 h-4"></i>
-                    </span>
-                    <p class="text-sm text-gray-400 mt-0.5 leading-relaxed">SQL development scripts</p>
-                </a>
-                <a href="https://victorsingha.github.io/lottie/" target="_blank"
-                    class="link-item block group">
-                    <span class="text-xl tracking-tight font-semibold text-gray-900 group-hover:text-[#006039] transition-colors duration-200">
-                        Lottie <i data-feather="arrow-up-right" class="inline w-4 h-4"></i>
-                    </span>
-                    <p class="text-sm text-gray-400 mt-0.5 leading-relaxed">Animation viewer</p>
-                </a>
-            </nav>
+            <div class="glass-table">
+                <table>
+                    <tr onclick="window.open('https://victorsingha.vercel.app/chat', '_blank')" style="cursor:pointer"><td>Chat ✨<span class="desc">Victor AI Portfolio Assistant</span></td></tr>
+                    <tr onclick="window.open('https://victorsingha.github.io/sql/', '_blank')" style="cursor:pointer"><td>SQL Server Tool<span class="desc">SQL development scripts</span></td></tr>
+                    <tr onclick="window.open('https://victorsingha.github.io/lottie/', '_blank')" style="cursor:pointer"><td>Lottie Json<span class="desc">Animation viewer</span></td></tr>
+                    <tr onclick="window.open('https://imbroke1.vercel.app/', '_blank')" style="cursor:pointer"><td>I m Broke<span class="desc">Expense tracker app</span></td></tr>
+                    <tr onclick="window.open('https://intelligence-markets.vercel.app/', '_blank')" style="cursor:pointer"><td>Intel Markets<span class="desc">Prediction markets</span></td></tr>
+                </table>
+            </div>
         </main>
 
         <!-- Footer -->
-        <footer class="mt-20 sm:mt-32">
+        <footer class="pb-8 sm:pb-10">
 
             <div class="pb-12 text-center">
                 <p class="text-xs text-muted tracking-wide text-gray-500 mb-2">Victor Singha © 2026</p>
@@ -150,42 +160,6 @@
 
     <script>
         feather.replace({ width: 16, height: 16 });
-
-        const words = ['design', 'typo', 'color', 'code', 'system'];
-        let idx = 0;
-        const el = document.getElementById('rotating-word');
-
-        function typeWord(word, cb) {
-            let i = 0;
-            function type() {
-                if (i < word.length) {
-                    el.textContent = word.slice(0, ++i);
-                    setTimeout(type, 100);
-                } else if (cb) cb();
-            }
-            type();
-        }
-
-        function deleteWord(cb) {
-            let cur = el.textContent;
-            function del() {
-                if (cur.length > 0) {
-                    cur = cur.slice(0, -1);
-                    el.textContent = cur;
-                    setTimeout(del, 60);
-                } else if (cb) cb();
-            }
-            del();
-        }
-
-        function cycle() {
-            deleteWord(() => {
-                idx = (idx + 1) % words.length;
-                typeWord(words[idx], () => setTimeout(cycle, 2000));
-            });
-        }
-
-        setTimeout(cycle, 2000);
 
         // Three.js Terrain
         let terrainMesh, scene, camera, renderer;
