@@ -17,10 +17,32 @@
             display: block;
             width: 100%;
             height: 100%;
+            cursor: grab;
+        }
+        canvas:active {
+            cursor: grabbing;
         }
         .fade-out canvas {
             opacity: 0;
             transition: opacity 0.8s ease;
+        }
+        .hint {
+            position: fixed;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255,255,255,0.35);
+            font-size: 13px;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            pointer-events: none;
+            opacity: 1;
+            transition: opacity 1s ease;
+            font-family: 'Inter', sans-serif;
+            text-shadow: 0 0 8px rgba(0,0,0,0.8);
+        }
+        .hint.hidden {
+            opacity: 0;
         }
     </style>
     <script type="importmap">
@@ -33,6 +55,7 @@
     </script>
 </head>
 <body>
+    <div class="hint" id="hint">Drag to orbit · Scroll to zoom</div>
     <script type="module">
         import * as THREE from 'three';
         import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
@@ -50,7 +73,10 @@
         scene.fog = new THREE.FogExp2(0x020104, 0.025);
         const aspect = window.innerWidth / window.innerHeight;
         const camera = new THREE.PerspectiveCamera(55, aspect, 0.1, 4000);
-        camera.position.set(-6.5, 5.0, 6.5);
+        const angle = Math.random() * Math.PI * 2;
+        const dist = 8 + Math.random() * 6;
+        const height = 4 + Math.random() * 3;
+        camera.position.set(Math.sin(angle) * dist, height, Math.cos(angle) * dist);
         camera.lookAt(0, 0, 0);
 
         const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "high-performance" });
@@ -105,6 +131,22 @@
                 }`
         };
         composer.addPass(new ShaderPass(lensingShader));
+
+        const hint = document.getElementById('hint');
+        let hintTimeout = setTimeout(() => hint.classList.add('hidden'), 5000);
+
+        let redirectTimeout = setTimeout(doRedirect, 3800);
+        const resetRedirect = () => {
+            clearTimeout(redirectTimeout);
+            redirectTimeout = setTimeout(doRedirect, 3800);
+        };
+
+        const canvas = renderer.domElement;
+        canvas.addEventListener('mousedown', () => { canvas.style.cursor = 'grabbing'; resetRedirect(); });
+        canvas.addEventListener('mouseup', () => canvas.style.cursor = 'grab');
+        canvas.addEventListener('mouseleave', () => canvas.style.cursor = 'grab');
+        canvas.addEventListener('wheel', resetRedirect, { passive: true });
+        canvas.addEventListener('touchstart', resetRedirect, { passive: true });
 
         const controls = new OrbitControls(camera, renderer.domElement);
         controls.enableDamping = true;
@@ -338,12 +380,12 @@
 
         animate();
 
-        setTimeout(() => {
+        function doRedirect() {
             document.body.classList.add('fade-out');
             setTimeout(() => {
                 window.location.href = 'https://victorsingha.vercel.app/chat';
             }, 900);
-        }, 3800);
+        }
     </script>
 </body>
 </html>
