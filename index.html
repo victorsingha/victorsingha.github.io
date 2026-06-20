@@ -60,26 +60,11 @@
         import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
         import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
 
-        const viewMin = Math.min(window.innerWidth, window.innerHeight);
-        const aspect = window.innerWidth / window.innerHeight;
-
-        const sizeScale = Math.min(1, viewMin / 700);
-        const BLACK_HOLE_RADIUS = 1.3 * sizeScale;
-        const DISK_INNER_RADIUS = BLACK_HOLE_RADIUS + 0.2 * sizeScale;
-        const DISK_OUTER_RADIUS = 8.0 * sizeScale;
-        const DISK_TILT_ANGLE = Math.PI / 3.0;
-
         const scene = new THREE.Scene();
         scene.fog = new THREE.FogExp2(0x020104, 0.025);
-
-        const vFOV = 55 + Math.max(0, (700 - viewMin) / 20);
-        const camera = new THREE.PerspectiveCamera(vFOV, aspect, 0.1, 4000);
-
-        const distScale = Math.max(1, 1.4 / (aspect + 0.3));
-        const basePos = new THREE.Vector3(-6.5, 5.0, 6.5);
-        const dir = basePos.clone().normalize();
-        const dist = basePos.length() * distScale;
-        camera.position.copy(dir.multiplyScalar(dist));
+        const aspect = window.innerWidth / window.innerHeight;
+        const camera = new THREE.PerspectiveCamera(55, aspect, 0.1, 4000);
+        camera.position.set(-6.5, 5.0, 6.5);
         camera.lookAt(0, 0, 0);
 
         const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "high-performance" });
@@ -141,10 +126,10 @@
         controls.autoRotate = true;
         controls.autoRotateSpeed = 1.5;
         controls.target.set(0, 0, 0);
-        controls.minDistance = 2.5;
+        controls.minDistance = 1.5;
         controls.maxDistance = 100;
         controls.enablePan = false;
-        controls.enableZoom = false;
+        controls.enableZoom = true;
         controls.update();
 
         const starGeometry = new THREE.BufferGeometry();
@@ -342,21 +327,12 @@
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimeout);
             resizeTimeout = setTimeout(() => {
-                const asp = window.innerWidth / window.innerHeight;
-                const vm = Math.min(window.innerWidth, window.innerHeight);
-                const nvFOV = 55 + Math.max(0, (700 - vm) / 20);
-                const dScale = Math.max(1, 1.4 / (asp + 0.3));
-                const bp = new THREE.Vector3(-6.5, 5.0, 6.5);
-                const nd = bp.length() * dScale;
-                camera.fov = nvFOV;
-                camera.aspect = asp;
-                camera.position.copy(bp.clone().normalize().multiplyScalar(nd));
-                camera.lookAt(0, 0, 0);
+                camera.aspect = window.innerWidth / window.innerHeight;
                 camera.updateProjectionMatrix();
                 renderer.setSize(window.innerWidth, window.innerHeight);
                 composer.setSize(window.innerWidth, window.innerHeight);
                 bloomPass.resolution.set(window.innerWidth, window.innerHeight);
-                lensingShader.uniforms.aspectRatio.value = asp;
+                lensingShader.uniforms.aspectRatio.value = window.innerWidth / window.innerHeight;
                 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
             }, 150);
         });
