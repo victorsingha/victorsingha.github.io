@@ -67,8 +67,10 @@
 
         const scene = new THREE.Scene();
         scene.fog = new THREE.FogExp2(0x020104, 0.025);
-        const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 4000);
-        camera.position.set(-6.5, 5.0, 6.5);
+        const aspect = window.innerWidth / window.innerHeight;
+        const distFactor = Math.max(1, 1.0 / (aspect + 0.2));
+        const camera = new THREE.PerspectiveCamera(55, aspect, 0.1, 4000);
+        camera.position.set(-6.5 * distFactor, 5.0 * distFactor, 6.5 * distFactor);
         camera.lookAt(0, 0, 0);
 
         const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: "high-performance" });
@@ -130,7 +132,7 @@
         controls.autoRotate = true;
         controls.autoRotateSpeed = 1.5;
         controls.target.set(0, 0, 0);
-        controls.minDistance = 2.5;
+        controls.minDistance = 2.5 * distFactor;
         controls.maxDistance = 100;
         controls.enablePan = false;
         controls.enableZoom = false;
