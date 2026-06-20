@@ -18,24 +18,7 @@
             width: 100%;
             height: 100%;
         }
-        #top-bar {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100vw;
-            height: 3px;
-            z-index: 100;
-            background: rgba(255,255,255,0.06);
-        }
-        #top-bar-fill {
-            height: 100%;
-            width: 0%;
-            background: #dc2626;
-        }
         .fade-out canvas {
-            opacity: 0;
-            transition: opacity 0.8s ease;
-        }
-        .fade-out #top-bar {
             opacity: 0;
             transition: opacity 0.8s ease;
         }
@@ -50,8 +33,6 @@
     </script>
 </head>
 <body>
-    <div id="top-bar"><div id="top-bar-fill"></div></div>
-
     <script type="module">
         import * as THREE from 'three';
         import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
@@ -60,9 +41,9 @@
         import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
         import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
 
-        const BLACK_HOLE_RADIUS = 0.8;
-        const DISK_INNER_RADIUS = BLACK_HOLE_RADIUS + 0.08;
-        const DISK_OUTER_RADIUS = 8.0;
+        const BLACK_HOLE_RADIUS = 4;
+        const DISK_INNER_RADIUS = BLACK_HOLE_RADIUS + 0;
+        const DISK_OUTER_RADIUS = 12.0;
         const DISK_TILT_ANGLE = Math.PI / 3.0;
 
         const scene = new THREE.Scene();
@@ -316,18 +297,6 @@
         accretionDisk.renderOrder = 1;
         scene.add(accretionDisk);
 
-        const bar = document.getElementById('top-bar-fill');
-        let barStart = null;
-        function fillBar(t) {
-            if (!barStart) barStart = t;
-            const elapsed = (t - barStart) / 1000;
-            const progress = Math.min(elapsed / 3.0, 1);
-            const eased = 1 - Math.pow(1 - progress, 2);
-            bar.style.width = (eased * 100) + '%';
-            if (progress < 1) requestAnimationFrame(fillBar);
-        }
-        requestAnimationFrame(fillBar);
-
         let resizeTimeout;
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimeout);
@@ -369,12 +338,12 @@
 
         animate();
 
-        setTimeout(() => {
-            document.body.classList.add('fade-out');
-            setTimeout(() => {
-                window.location.href = 'https://victorsingha.vercel.app/chat';
-            }, 900);
-        }, 3800);
+        // setTimeout(() => {
+        //     document.body.classList.add('fade-out');
+        //     setTimeout(() => {
+        //         window.location.href = 'https://victorsingha.vercel.app/chat';
+        //     }, 900);
+        // }, 3800);
     </script>
 </body>
 </html>
